@@ -21,6 +21,18 @@ like a standard multiplexer, but filters on node subtrees instead
 
 ===================================
 
+Expire remote caches (ezflow based) workflow:
+
+used to expire reverse proxy caches when an object is edited.
+
+It is based on the eZHTTPCacheManager class and configuration from eZ Flow, which means that:
+. eZ Flow is needed to take advantage of this workflow
+. for the workflow to do anything, editing squid.ini is necessary
+. currently the only CacheManager class available can purge both squid and varnish reverse proxy caches
+. it allows to purge the cache correctly even if multiple domains/hostnames are cused (see ezworkflowcollection.ini)
+
+===================================
+
 'Relate to node' workflow:
 
 will add a content as related-object to another node.

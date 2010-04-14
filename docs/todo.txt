@@ -5,6 +5,9 @@ subtree mutiplexer workflow:
 - use graphical node selector to pick target nodes
 - allow more than one subtree to be selected at a time
 
+Expire remote caches workflow:
+- allow to make calls to more than one remote proxy server at a time
+
 workflows that could be useful:
 
 - another multiplexer: filter on class/attribute
@@ -17,6 +20,7 @@ workflows that could be useful:
 
 - hide_until_date (same as wait_until_date but keeps obj invisibles) => use gwutils extension
 - copy object
+- create new object (with a mapping from current obj fields to new obj ones)
 - set_section
 - something about translating content... ?
 - change_owner
