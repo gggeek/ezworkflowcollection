@@ -12,6 +12,8 @@ workflows that could be useful:
 
 - another multiplexer: filter on class/attribute
 
+- another multiplexer: filter on role
+
 - the same as the multiplexers, but used as filters on the existing workflow rather than jump-off points
 
 - add_to_obj_relation
@@ -24,5 +26,6 @@ workflows that could be useful:
 - set_section
 - something about translating content... ?
 - change_owner
+- block editing of some attributes
 - ...
 - profit!
