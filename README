@@ -8,7 +8,7 @@ will add secondary locations (one or more) when a content is published.
 The list of nodes used as parents for secondary location(s) has to be defined for every workflow event (ie. in the admin interface).
 It is possible, but not mandatory, to add a class/attribute combination acting as filter, deciding for every given object being published wheter the multipublication will happen or not:
   - If no class/attribute combination is selected, the workflow will apply to every object published (to limit its applicability, chain it to a multiplexer workflow).
-  - If a class/attribute combination is selected, the workflow will check the value of the given attribute to decide if multi-publication has to take place; if the attribute is not found in the current class, no multi-publication happens.  
+  - If a class/attribute combination is selected, the workflow will check the value of the given attribute to decide if multi-publication has to take place; if the attribute is not found in the current class, no multi-publication happens.
   - If multiple class/attribute combinations are selected, the workflow will apply to every object that has set to TRUE at least one of those attributes.
 If an edited object is already child of one of the nodes selcted as multi-publication location, the workflow does not add a new secondary location at the same place.
 The cronjob never removes any secondary location, nor does it change any location to become primary.
@@ -61,3 +61,9 @@ also with batch emails (eg. 1 x week or 1 x month)
 Improved approval workflow:
 
 send out an email in case of rejection, too
+
+===================================
+
+"Approve location" workflow:
+
+Allow approval on adding a new location to an object, look at INSTALL file and check troubleshooting section.
