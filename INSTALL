@@ -1,0 +1,45 @@
+Extension ezworkflowcollection for eZ publish
+
+
+Requirements
+============
+See the README file
+
+
+Getting and installing eZ publish
+==================
+
+
+Installing the extension
+==========================================================
+1. Download the package.
+2. Copy the downloaded package into the 'extension' directory of your
+   eZ publish installation.
+3. Unpack the files in the distribution.
+4. Add a table in the database used by your eZ Publish instance. You can do so as follows
+   ( from eZ Publish's root directory ), in the case you are using MySQL:
+
+   $> mysql -u <user> -p <database_name> < extension/ezworkflowcollection/sql/mysql/schema.sql
+
+   The procedure is very similar in case you are using another RDMS. You may want to have a look at the
+   sql/oracle and sql/postgresql for Oracle and PostgreSQL databases respectively.
+   Please refer to the documentation reference for your DBMS if you are experiencing issues.
+
+5. Enable the extension in eZ publish.
+   Regenerate the extensions autoloads config if enabling the extension by hand.
+6. Clear the caches for the administration interface
+
+
+Configuration
+=============
+
+Troubleshooting
+===============
+
+For any problem or question, please post on the extension forums on projects.ez.no
+
+Known problems in eZ Publish kernel for workflow approvelocation type
+=====================================================================
+Issue in index.php in loading debug.ini : http://issues.ez.no/IssueView.php?Id=16417&activeItem=2
+Issue in eZOperationMemento::createkey() : http://issues.ez.no/IssueView.php?Id=16648&activeItem=4
+Issue in eZWorflowProcess::createKey() : http://issues.ez.no/IssueView.php?Id=14751&activeItem=3
