@@ -84,7 +84,7 @@ class approveLocationType extends eZApproveType
 
     }
 
-function hasAttribute( $attr )
+    function hasAttribute( $attr )
     {
         return in_array( $attr, $this->attributes() );
     }
@@ -306,7 +306,7 @@ function hasAttribute( $attr )
     }
 
 
-function validateUserIDList( $userIDList, &$reason )
+	function validateUserIDList( $userIDList, &$reason )
     {
         $returnState = eZInputValidator::STATE_ACCEPTED;
         foreach ( $userIDList as $userID )
