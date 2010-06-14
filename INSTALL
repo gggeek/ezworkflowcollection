@@ -29,6 +29,10 @@ Installing the extension
    Regenerate the extensions autoloads config if enabling the extension by hand.
 6. Clear the caches for the administration interface
 
+7. Create new workflow from administration interface Setup/Workflows
+8. Plug workflow to the correspondinf triggers Setup/Triggers
+
+9. Have fun !!!
 
 Configuration
 =============
@@ -41,5 +45,6 @@ For any problem or question, please post on the extension forums on projects.ez.
 Known problems in eZ Publish kernel for workflow approvelocation type
 =====================================================================
 Issue in index.php in loading debug.ini : http://issues.ez.no/IssueView.php?Id=16417&activeItem=2
+Issue in cronjobs/workflow.php : http://issues.ez.no/IssueView.php?Id=16913&activeItem=1
 Issue in eZOperationMemento::createkey() : http://issues.ez.no/IssueView.php?Id=16648&activeItem=4
 Issue in eZWorflowProcess::createKey() : http://issues.ez.no/IssueView.php?Id=14751&activeItem=3
