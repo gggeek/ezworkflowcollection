@@ -33,6 +33,16 @@ It is based on the eZHTTPCacheManager class and configuration from eZ Flow, whic
 
 ===================================
 
+"Approve location" workflow:
+
+Allow approval upon adding a new location to an object.
+Look at INSTALL file and check troubleshooting section for more info.
+
+
+FUTURE IDEAS
+
+===================================
+
 'Relate to node' workflow:
 
 will add a content as related-object to another node.
@@ -61,9 +71,3 @@ also with batch emails (eg. 1 x week or 1 x month)
 Improved approval workflow:
 
 send out an email in case of rejection, too
-
-===================================
-
-"Approve location" workflow:
-
-Allow approval on adding a new location to an object, look at INSTALL file and check troubleshooting section.

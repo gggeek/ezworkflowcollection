@@ -1,4 +1,4 @@
-<?php /* #?ini charset="utf8"?
+<?php /*
 
 [HandlerSettings]
 Extensions[]=ezworkflowcollection
