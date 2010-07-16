@@ -20,6 +20,7 @@ workflows that could be useful:
 - add_to_obj_relation(s)_attribute
 - demultipublish (the opposite of multipublish)
 
+- give warning if object to be deleted is linked to other docs (useful for media)
 - hide_until_date (same as wait_until_date but keeps obj invisibles) => use gwutils extension
 - copy object
 - create new object (with a mapping from current obj fields to new obj ones)
