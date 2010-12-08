@@ -254,7 +254,7 @@ class approveLocationType extends eZApproveType
             $approveUserIDArray = array_unique( $approveUserIDArray );
 
             $db = eZDb::instance();
-            $taskResult = $db->arrayQuery( 'select workflow_process_id, collaboration_id from ezxapprovelocation_items where workflow_process_id = ' . $process->attribute( 'id' ) . ' and target_node_ids = ' . $targetNodeIDs[0] );
+            $taskResult = $db->arrayQuery( 'select workflow_process_id, collaboration_id from ezxapprovelocation_items where workflow_process_id = ' . $process->attribute( 'id' ) );
             eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $process->attribute( 'event_state'), 'approve $process->attribute( \'event_state\')' );
 
             if( count( $taskResult ) > 0 && $taskResult[0]['collaboration_id'] !== false )
@@ -579,7 +579,6 @@ class approveLocationType extends eZApproveType
 
     function checkApproveCollaboration( $process, $event, $collaborationID = 0 )
     {
-    	var_dump('check again approval');
         $db = eZDb::instance();
         if( $collaborationID > 0 )
         {
