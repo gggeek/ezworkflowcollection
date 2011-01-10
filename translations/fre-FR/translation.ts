@@ -3,66 +3,66 @@
     <name>extension/ezworkflowcollection</name>
     <message>
         <source>Target nodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Noeud cible</translation>
     </message>
     <message>
         <source>Multipublish</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Class name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de la classe</translation>
     </message>
     <message>
         <source>ClassAttribute name</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de l'attribut de la classe</translation>
     </message>
     <message>
         <source>Filter on class attributes:</source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrer sur un attribut de la classe</translation>
     </message>
     <message>
         <source>(only booleans supported)</source>
-        <translation type="unfinished"></translation>
+        <translation>(booléens supportés uniquement)</translation>
     </message>
 
     <message>
         <source>Subtree Multiplexer</source>
-        <translation type="unfinished"></translation>
+        <translation>Multiplexer de sous arborescence</translation>
     </message>
     <message>
         <source>Affected subtree</source>
-        <translation type="unfinished"></translation>
-    </message
+        <translation>Sous arbrescence affectée</translation>
+    </message>
 </context>
 <context>
     <name>extension/ezworkflowcollection/design/admin/updatestate/list</name>
     <message>
         <source>Contents in state</source>
-        <translation type="unfinished"></translation>
+        <translation>Contenus à l'état</translation>
     </message>
     <message>
         <source>List contents in state</source>
-        <translation type="unfinished"></translation>
+        <translation>Liste des contenus à l'état</translation>
     </message>
     <message>
         <source>There is no contents in state</source>
-        <translation type="unfinished"></translation>
+        <translation>Il n'y a aucun contenu à l'état</translation>
     </message>
     <message>
         <source>Update selected content objects for following state</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour les objets de contenu pour l'état suivant</translation>
     </message>
     <message>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour</translation>
     </message>
 </context>
 <context>
     <name>extension/ezworkflowcollection/admin/parts/my/menu</name>
     <message>
         <source>Update states</source>
-        <translation type="unfinished"></translation>
+        <translation>Mettre à jour les états</translation>
     </message>
 </context>
 </TS>
