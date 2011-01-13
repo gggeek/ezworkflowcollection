@@ -1,13 +1,15 @@
 {let item_type=ezpreference( 'admin_list_limit' )
      number_of_items=min( $item_type, 3)|choose( 10, 10, 25, 50 )
      list_count = fetch('content', 'tree_count', hash( 'parent_node_id', 1,
-                                           'attribute_filter', array( 'and', array('state', "=", $state.id))
+                                           'attribute_filter', array( 'and', array('state', "=", $state.id)),
+                                           'main_node_only', true()
                                            ))
      content_list=fetch('content', 'tree', hash( 'parent_node_id', 1,
                                            'limit', $number_of_items,
                                            'offset', $view_parameters.offset,
                                            'attribute_filter', array( 'and', array('state', "=", $state.id)),
-                                           'sort_by', array(array('modified', false() ))
+                                           'sort_by', array(array('modified', false() ) ),
+                                           'main_node_only', true()
                                           ))}
 
 <form name="listaction" action={concat( 'updatestate/list/' )|ezurl} method="post">
