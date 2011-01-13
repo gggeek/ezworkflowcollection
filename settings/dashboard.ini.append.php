@@ -1,4 +1,4 @@
-<?php /* #?ini charset="iso-8859-1"?
+<?php /*
 
 [DashboardSettings]
 #DashboardBlocks[]

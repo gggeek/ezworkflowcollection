@@ -1,6 +1,5 @@
 <?php /*
 
-
 [OperationSettings]
 AvailableOperationList[]=content_addlocation
 
@@ -19,8 +18,5 @@ AvailableEventTypes[]=event_expireremotecacheflow
 
 #AvailableEventTypes[]=event_relatetonode
 #AvailableEventTypes[]=event_relatetonodeattribute
-
-
-
 
 */ ?>
