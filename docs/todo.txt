@@ -1,15 +1,25 @@
-multipublish workflow:
+multipublish event:
 - use graphical node selector to pick target nodes of multipublication
 
-subtree mutiplexer workflow:
+subtree mutiplexer event:
 - use graphical node selector to pick target nodes
 - allow more than one subtree to be selected at a time
-- allow a slightly different behaviour: if an obj published in multiple locations is edited in a node that is not in the desired subtree, do not trigger the event
+- allow a slightly different optional behaviour: if an obj published in multiple locations is edited in a node that is not in the desired subtree, do not trigger the event
+- add optional negation: trigger if obj outside of tree
+- add depth limitation: trigger if obj is in subtree and no more deep than X
 
-Expire remote caches workflow:
+Expire remote caches event:
 - allow to make calls to more than one remote proxy server at a time
 
-workflows that could be useful:
+events that could be useful:
+
+- subtree multipublish: duplicate children of node X to node Y, keeping tree structure
+
+- send an email to a fixed user / list of users, with body based on template
+
+- tracing event: log workflow status to ez logs (or something else?)
+
+- halting event (test: if run on a mux-called subworkflow, does it halt the original)
 
 - another multiplexer: filter on class/attribute
 

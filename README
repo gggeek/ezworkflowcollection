@@ -1,7 +1,7 @@
 Extension ezworkflowcollection for eZ publish
 ===================================
 
-Multipublish workflow:
+Multipublish workflow event:
 
 will add secondary locations (one or more) when a content is published.
 
@@ -15,15 +15,16 @@ The cronjob never removes any secondary location, nor does it change any locatio
 
 ===================================
 
-Subtree Multiplexer workflow:
+Subtree Multiplexer workflow event:
 
 like a standard multiplexer, but filters on node subtrees instead
 
 ===================================
 
-Expire remote caches (ezflow based) workflow:
+Expire remote caches (ezflow based) workflow event:
 
-used to expire reverse proxy caches when an object is edited.
+used to purge reverse proxy caches when an object is edited.
+This allows to set a high TTL for all web pages and increase the hit rate of reverse proxies, and at the same time to have the proxy refresh its cached version of a page as soon as the object is edited.
 
 It is based on the eZHTTPCacheManager class and configuration from eZ Flow, which means that:
 . eZ Flow is needed to take advantage of this workflow
@@ -33,7 +34,7 @@ It is based on the eZHTTPCacheManager class and configuration from eZ Flow, whic
 
 ===================================
 
-"Approve location" workflow:
+"Approve location" workflow event:
 
 Allow approval upon adding a new location to an object.
 Look at INSTALL file and check troubleshooting section for more info.

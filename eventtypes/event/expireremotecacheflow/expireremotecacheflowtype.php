@@ -30,17 +30,33 @@ class expireremotecacheflowType extends eZWorkflowEventType
         $objectId = $parameters['object_id'];
         eZDebug::writeDebug( 'Expire remote cache event begins execution for object ' . $objectId );
 
+        $ini = eZINI::instance( 'ezworkflowcollection.ini' );
         $object = eZContentObject::fetch( $objectId );
         if ( $object != null )
         {
-            // get list of nodes this object is already child of
-            $assigned_nodes = $object->attribute( 'assigned_nodes' );
-    		foreach( $assigned_nodes as $assigned_node )
+            if ( $ini->variable( 'ExpireRemoteCacheFlowSettings', 'ExpireOnlyObjectNodes' ) == 'enabled' )
+            {
+                // basic version
+                // get list of nodes this object is published with
+                $assigned_nodes = $object->attribute( 'assigned_nodes' );
+            }
+            else
+            {
+                // smart-cache enabled version
+                // get list of nodes whose view-cache is expired
+                $assigned_nodes = array();
+                eZContentCacheManager::nodeListForObject( $object, true, self::CLEAR_DEFAULT, $assigned_nodes, $handledObjectList );
+                foreach( $assigned_nodes as $i => $nodeID )
+                {
+                    $assigned_nodes[$i] = eZContentObjectTreeNode::fetch( $nodeID );
+                }
+            }
+
+            $domains = $ini->variable( 'ExpireRemoteCacheFlowSettings', 'ExpireDomains' );
+            foreach( $assigned_nodes as $assigned_node )
     		{
                 // for every node, call eZHTTPCacheManager to clean the remote cache
     		    $url = $assigned_node->attribute( 'path_identification_string' );
-    		    $ini = eZINI::instance( 'ezworkflowcollection.ini' );
-    		    $domains = $ini->variable( 'ExpireRemoteCacheFlowSettings', 'ExpireDomains' );
     		    if ( is_array( $domains ) && ( count( $domains ) > 1 || ( count( $domains ) > 0 && $domains[0] != '' ) ) )
     		    {
     		        eZURI::transformURI( $url );
