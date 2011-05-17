@@ -5,11 +5,12 @@
  * @author G. Giunta
  * @version $Id$
  * @license Licensed under GNU General Public License v2.0. See file license.txt
- * @copyright (C) G. Giunta 2010
+ * @copyright (C) G. Giunta 2010-2011
  *
  * @todo verify it this workflow event can work as pre-publish too
  * @todo use a static nclass var for storing data in-between function calls instead of $globals
  */
+include_once( 'kernel/common/i18n.php' );
 
 class multiPublishType extends eZWorkflowEventType
 {

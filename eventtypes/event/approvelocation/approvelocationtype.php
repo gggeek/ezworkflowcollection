@@ -1,4 +1,5 @@
 <?php
+include_once( 'kernel/common/i18n.php' );
 
 class approveLocationType extends eZApproveType
 {

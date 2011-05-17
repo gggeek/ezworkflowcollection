@@ -6,11 +6,12 @@
  * @author G. Giunta
  * @version $Id$
  * @license Licensed under GNU General Public License v2.0. See file license.txt
- * @copyright (C) G. Giunta 2010
+ * @copyright (C) G. Giunta 2010-2011
  *
  * @todo we could loop on all attributes on an object and skip execution if we find an ezpage,
  *       as it does the same on its own...
  */
+include_once( 'kernel/common/i18n.php' );
 
 class expireremotecacheflowType extends eZWorkflowEventType
 {
