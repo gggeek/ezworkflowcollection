@@ -19,7 +19,7 @@ class multiPublishType extends eZWorkflowEventType
     // register workflow event as available for post-publish only
     function __construct()
     {
-        $this->eZWorkflowEventType( multiPublishType::WORKFLOW_TYPE_STRING, ezi18n( 'extension/ezworkflowcollection', 'Multipublish' ) );
+        $this->eZWorkflowEventType( multiPublishType::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'extension/ezworkflowcollection', 'Multipublish' ) );
         $this->setTriggerTypes( array( 'content' => array( 'publish' => array ( 'after' ) ) ) );
     }
 

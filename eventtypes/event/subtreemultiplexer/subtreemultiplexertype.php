@@ -14,7 +14,7 @@ class SubTreeMultiplexerType extends eZWorkflowEventType
 
     function __construct()
     {
-        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezi18n( 'extension/ezworkflowcollection', 'Subtree Multiplexer' ) );
+        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'extension/ezworkflowcollection', 'Subtree Multiplexer' ) );
         $this->setTriggerTypes( array( 'content' => array( 'publish' => array ( 'before', 'after' ) ) ) );
     }
 

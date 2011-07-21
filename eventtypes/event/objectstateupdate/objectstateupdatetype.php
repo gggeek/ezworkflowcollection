@@ -19,7 +19,7 @@ class objectStateUpdateType extends eZWorkflowEventType
     // register workflow event as available for post-publish only
     function __construct()
     {
-        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezi18n( 'extension/ezworkflowobjectstate', 'Object state update' ) );
+        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'extension/ezworkflowobjectstate', 'Object state update' ) );
         $this->setTriggerTypes( array( 'content' => array( 'publish' => array ( 'after' ) ) ) );
     }
 

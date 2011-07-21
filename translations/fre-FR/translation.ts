@@ -65,4 +65,11 @@
         <translation>Mettre à jour les états</translation>
     </message>
 </context>
+<context>
+    <name>extension/ezworkflowcollection/dashboard</name>
+    <message>
+        <source>Contents waiting for publishing validation</source>
+        <translation>Contenus à valider et publier</translation>
+    </message>
+</context>
 </TS>

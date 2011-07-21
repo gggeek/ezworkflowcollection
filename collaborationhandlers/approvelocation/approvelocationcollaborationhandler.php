@@ -69,7 +69,7 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
     function approveLocationCollaborationHandler()
     {
         $this->eZCollaborationItemHandler( approveLocationType::WORKFLOW_TYPE_STRING,
-                                           ezi18n( 'ezworkflows/classes', 'Location approval' ),
+                                           ezpI18n::tr( 'ezworkflows/classes', 'Location approval' ),
                                            array( 'use-messages' => true,
                                                   'notification-types' => true,
                                                   'notification-collection-handling' => eZCollaborationItemHandler::NOTIFICATION_COLLECTION_PER_PARTICIPATION_ROLE ) );
@@ -77,7 +77,7 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
 
     function title( $collaborationItem )
     {
-        return ezi18n( 'ezworkflows/classes', 'Location approval' );
+        return ezpI18n::tr( 'ezworkflows/classes', 'Location approval' );
     }
 
     function content( $collaborationItem )

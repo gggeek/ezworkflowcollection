@@ -8,7 +8,7 @@ class approveLocationType extends eZApproveType
 
    function approveLocationType()
     {
-        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezi18n( 'ezworkflows/workflow/event', "ApproveLocation" ) );
+        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'ezworkflows/workflow/event', "ApproveLocation" ) );
         $this->setTriggerTypes( array( 'content' => array( 'addlocation' => array( 'before' ) ) ) );
     }
 

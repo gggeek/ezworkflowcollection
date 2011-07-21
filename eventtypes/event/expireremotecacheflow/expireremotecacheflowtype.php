@@ -20,7 +20,7 @@ class expireremotecacheflowType extends eZWorkflowEventType
     // register workflow event as available for post-publish only
     function __construct()
     {
-        $this->eZWorkflowEventType( expireremotecacheflowType::WORKFLOW_TYPE_STRING, ezi18n( 'extension/ezworkflowcollection', 'Expire remote caches (ezflow based)' ) );
+        $this->eZWorkflowEventType( expireremotecacheflowType::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'extension/ezworkflowcollection', 'Expire remote caches (ezflow based)' ) );
         $this->setTriggerTypes( array( 'content' => array( 'publish' => array ( 'after' ) ) ) );
     }
 
