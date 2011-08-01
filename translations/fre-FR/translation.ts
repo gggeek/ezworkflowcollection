@@ -38,15 +38,15 @@
 <context>
     <name>extension/ezworkflowcollection/design/admin/updatestate/list</name>
     <message>
-        <source>Contents in state</source>
+        <source>Content in state</source>
         <translation>Contenus à l'état</translation>
     </message>
     <message>
-        <source>List contents in state</source>
+        <source>List content in state</source>
         <translation>Liste des contenus à l'état</translation>
     </message>
     <message>
-        <source>There is no contents in state</source>
+        <source>There is no content in state</source>
         <translation>Il n'y a aucun contenu à l'état</translation>
     </message>
     <message>
@@ -68,7 +68,7 @@
 <context>
     <name>extension/ezworkflowcollection/dashboard</name>
     <message>
-        <source>Contents waiting for publishing validation</source>
+        <source>Content waiting for publishing validation</source>
         <translation>Contenus à valider et publier</translation>
     </message>
 </context>

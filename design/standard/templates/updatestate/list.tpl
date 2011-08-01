@@ -17,7 +17,7 @@
 <div class="context-block">
 
 {* DESIGN: Header START *}<div class="box-header"><div class="box-tc"><div class="box-ml"><div class="box-mr"><div class="box-tl"><div class="box-tr">
-<h1 class="context-title">{"Contents in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')} <i>{$state_name}</i> [{$list_count}]</h1>
+<h1 class="context-title">{"Content in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')} <i>{$state_name}</i> [{$list_count}]</h1>
 
 
 {* DESIGN: Mainline *}<div class="header-mainline"></div>
@@ -54,7 +54,7 @@
     </p>
 </div>
 
-<div class="right"> {"List contents in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')} :
+<div class="right"> {"List content in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')}:
 	<select name="State" onChange="submit()">
 	{def $ignore_states = cond( ezini_hasvariable("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), ezini("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), true(), array() ) }
 	{foreach $state.group.states as $element}
@@ -95,7 +95,7 @@
 </table>
 {section-else}
 <div class="block">
-<p>{"There is no contents in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')} <i>{$state_name}</i></p>
+<p>{"There is no content in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')} <i>{$state_name}</i></p>
 </div>
 {/section}
 

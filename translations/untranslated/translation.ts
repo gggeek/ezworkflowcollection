@@ -38,15 +38,15 @@
 <context>
     <name>extension/ezworkflowcollection/design/admin/updatestate/list</name>
     <message>
-        <source>Contents in state</source>
+        <source>Content in state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>List contents in state</source>
+        <source>List content in state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>There is no contents in state</source>
+        <source>There is no content in state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
