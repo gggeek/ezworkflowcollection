@@ -56,8 +56,11 @@
 
 <div class="right"> {"List contents in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')} :
 	<select name="State" onChange="submit()">
+	{def $ignore_states = cond( ezini_hasvariable("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), ezini("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), true(), array() ) }
 	{foreach $state.group.states as $element}
+		{if $ignore_states|contains($element.id)|not}
 		<option value="{$element.id}"{if $element.id|eq($state.id)} selected="selected"{/if}>{$element.current_translation.name}</option>
+		{/if}
 	{/foreach}
 	</select>
 </div>
