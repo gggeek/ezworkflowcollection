@@ -44,7 +44,7 @@ $currrentDate = time();
 $ini = new eZINI( 'ezworkflowcollection.ini' );
 $targetState = $ini->variable('UpdateObjectStatesSettings', 'ArchiveObjectState');
 
-$adminUser = eZUser::fetch($ini->variable('UpdateObjectStatesSettings', 'ArchiveObjectState'));
+$adminUser = eZUser::fetch($ini->variable('UpdateObjectStatesSettings', 'ObjectStateUserID'));
 eZUser::setCurrentlyLoggedInUser( $adminUser );
 
 $currentUser = eZUser::currentUser();
