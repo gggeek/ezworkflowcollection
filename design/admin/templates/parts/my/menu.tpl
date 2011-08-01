@@ -11,11 +11,11 @@
     <li><div><a href={'/content/pendinglist/'|ezurl}>{'My pending items'|i18n( 'design/admin/parts/my/menu' )}</a></div></li>
     {if fetch( 'user', 'has_access_to', hash( 'module',   'collaboration',
              'function', 'view', 'user_id',  $current_user.contentobject_id ) )}
-    <li><div><a href={'/collaboration/view/summary'|ezurl}>Contenus en attente de validation</a></div></li>
+    <li><div><a href={'/collaboration/view/summary'|ezurl}>{"Collaboration"|i18n( 'design/admin/parts/my/menu' )}</a></div></li>
     {/if}
     {if fetch( 'user', 'has_access_to', hash( 'module',   'updatestate',
              'function', 'list', 'user_id',  $current_user.contentobject_id ) )}
-    <li><div><a href={'/etats/list'|ezurl}>Contenus en attente de publication</a></div></li>
+    <li><div><a href={'/updatestate/list'|ezurl}>{"Update states"|i18n( 'design/admin/parts/my/menu' )}</a></div></li>
     {/if}
     <li><div><a href={'/notification/settings/'|ezurl}>{'My notification settings'|i18n( 'design/admin/parts/my/menu' )}</a></div></li>
     <li><div><a href={'/content/bookmark/'|ezurl}>{'My bookmarks'|i18n( 'design/admin/parts/my/menu' )}</a></div></li>
