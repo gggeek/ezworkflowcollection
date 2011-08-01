@@ -89,7 +89,7 @@
     <td>{let section_object=fetch( section, object, hash( section_id, $content_object.section_id ) )}{section show=$section_object}{$section_object.name|wash}{section-else}<i>{'Unknown'|i18n( 'design/admin/content/draft' )}</i>{/section}{/let}</td>
     <td><img src="{$content_object.initial_language.locale|flag_icon}" alt="{$content_object.initial_language.locale|wash}" style="vertical-align: middle;" />&nbsp;{$content_object.initial_language.name|wash}</td>
     <td>{$content_object.modified|l10n( shortdatetime )}</td>
-    <td><a href={concat( '/content/edit/', $content_object.id, '/', $content_object.version, '/' )|ezurl} title="{'Edit <%draft_name>.'|i18n( 'design/admin/content/draft',, hash( '%draft_name', $content_object.name ) )|wash}" ><img src={'edit.gif'|ezimage} border="0" alt="{'Edit'|i18n( 'design/admin/content/draft' )}" /></a></td>
+    <td>{if $content_object.can_edit}<a href={concat( '/content/edit/', $content_object.id, '/', $content_object.current_version, '/' )|ezurl} title="{'Edit <%draft_name>.'|i18n( 'design/admin/content/draft',, hash( '%draft_name', $content_object.name ) )|wash}" ><img src={'edit.gif'|ezimage} border="0" alt="{'Edit'|i18n( 'design/admin/content/draft' )}" /></a>{else}<img src={'edit_disabled.png'|ezimage} border="0" alt="{'Edit'|i18n( 'design/admin/content/draft' )}" />{/if}</td>
 </tr>
 {/section}
 </table>
