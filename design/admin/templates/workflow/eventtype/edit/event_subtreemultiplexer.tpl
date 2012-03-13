@@ -12,7 +12,7 @@
 
 {* Subtree *}
 <div class="element">
-    <label>{'Affected subtree'|i18n( 'extension/ezworkflowcollection' )</label>
+    <label>{'Affected subtree'|i18n( 'extension/ezworkflowcollection' )}</label>
     <input type="text" name="WorkflowEvent_event_subtreemultiplexer_target_subtree_{$event.id}" size="10" value="{$event.target_subtree}"/>
 </div>
 
