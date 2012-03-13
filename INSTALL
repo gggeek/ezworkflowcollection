@@ -1,17 +1,13 @@
-Extension ezworkflowcollection for eZ publish
+eZWorkflowCollection extension for eZ publish
 
 
 Requirements
 ============
-See the README file
-
-
-Getting and installing eZ publish
-==================
+eZ Publish 4.X or later
 
 
 Installing the extension
-==========================================================
+========================
 1. Download the package.
 2. Copy the downloaded package into the 'extension' directory of your
    eZ publish installation.

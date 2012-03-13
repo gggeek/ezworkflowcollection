@@ -1,5 +1,6 @@
 multipublish event:
 - use graphical node selector to pick target nodes of multipublication
+- branch off attribute filter in a separate mux event
 
 subtree mutiplexer event:
 - use graphical node selector to pick target nodes
@@ -24,6 +25,10 @@ events that could be useful:
 - another multiplexer: filter on class/attribute
 
 - another multiplexer: filter on role
+
+- another multiplexer: filter on section
+
+- another multiplexer: filter on obj states
 
 - the same as the multiplexers, but used as filters on the existing workflow rather than jump-off points
 

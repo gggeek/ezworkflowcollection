@@ -56,6 +56,14 @@ will add a content as related-object to another node, making use of a related-ob
 
 ===================================
 
+Section-based multiplexer
+
+===================================
+
+Object-state-based multiplexer
+
+===================================
+
 Hide until date workflow:
 
 please use the GWUtils extension, that already implements this
