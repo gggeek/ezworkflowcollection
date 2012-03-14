@@ -8,7 +8,7 @@ $http = eZHTTPTool::instance();
 $Offset = $Params['Offset'];
 $viewParameters = array( 'offset' => $Offset );
 
-if ( $Params['State'] !=0 )
+if ( $Params['State'] != 0 )
 {
     $state = $Params['State'];
 }
@@ -73,6 +73,6 @@ $tpl->setVariable( 'view_parameters', $viewParameters );
 $Result = array();
 $Result['content'] = $tpl->fetch( 'design:updatestate/list.tpl' );
 
-$Result['path'] = array( array( 'text' => "Content in state: ".$stateName,
+$Result['path'] = array( array( 'text' => "Content in state: " . $stateName,
                                 'url' => false ) );
 ?>
