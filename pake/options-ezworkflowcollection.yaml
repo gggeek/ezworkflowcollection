@@ -20,9 +20,9 @@ ezp:
         minor: 1
         release: 4
 
-# Subversion properties
-svn:
-    url: http://svn.projects.ez.no/ezworkflowcollection/trunk/extension/ezworkflowcollection/
+# Github properties
+git:
+    url: https://github.com/gggeek/ezworkflowcollection.git
 
 # other
 releasenr:
