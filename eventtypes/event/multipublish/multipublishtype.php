@@ -3,9 +3,8 @@
  * Workflow that will multi-publish content under some other user-specified nodes
  *
  * @author G. Giunta
- * @version $Id$
- * @license Licensed under GNU General Public License v2.0. See file license.txt
- * @copyright (C) G. Giunta 2010-2011
+ * @license Licensed under GNU General Public License v2.0. See file LICENSE
+ * @copyright (C) G. Giunta 2010-2012
  *
  * @todo verify it this workflow event can work as pre-publish too
  * @todo use a static nclass var for storing data in-between function calls instead of $globals

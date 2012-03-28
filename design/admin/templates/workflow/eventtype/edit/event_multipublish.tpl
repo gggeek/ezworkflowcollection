@@ -1,9 +1,8 @@
 {*
  * Template for editing of multipublication event
  * @author G. Giunta
- * @version $Id$
- * @license Licensed under GNU General Public License v2.0. See file license.txt
- * @copyright (C) G. Giunta 2010
+ * @license Licensed under GNU General Public License v2.0. See file LICENSE
+ * @copyright (C) G. Giunta 2010-2012
  *
  * @todo use node selector to pick up target nodes
  *}

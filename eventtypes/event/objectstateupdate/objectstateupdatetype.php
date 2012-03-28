@@ -3,9 +3,8 @@
  * Workflow that will update set a new object state to any content
  *
  * @author O. Portier
- * @version $Id$
- * @license Licensed under GNU General Public License v2.0. See file license.txt
- * @copyright (C) O. Portier 2010-2011
+ * @license Licensed under GNU General Public License v2.0. See file LICENSE
+ * @copyright (C) O. Portier 2010-2012
  *
  * @todo we could add some option and limitations to check initial object state and update it from the new state
  * 		 configured from the administration interface, with the workflow event editing
