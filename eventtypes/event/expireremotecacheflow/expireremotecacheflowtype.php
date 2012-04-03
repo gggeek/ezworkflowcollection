@@ -56,7 +56,7 @@ class expireremotecacheflowType extends eZWorkflowEventType
             foreach( $assigned_nodes as $assigned_node )
     		{
                 // for every node, call eZHTTPCacheManager to clean the remote cache
-    		    $url = $assigned_node->attribute( 'path_identification_string' );
+    		    $url = $assigned_node->urlAlias();
     		    if ( is_array( $domains ) && ( count( $domains ) > 1 || ( count( $domains ) > 0 && $domains[0] != '' ) ) )
     		    {
     		        eZURI::transformURI( $url );
