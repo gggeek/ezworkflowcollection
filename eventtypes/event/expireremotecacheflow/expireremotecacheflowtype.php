@@ -45,7 +45,7 @@ class expireremotecacheflowType extends eZWorkflowEventType
                 // smart-cache enabled version
                 // get list of nodes whose view-cache is expired
                 $assigned_nodes = array();
-                eZContentCacheManager::nodeListForObject( $object, true, self::CLEAR_DEFAULT, $assigned_nodes, $handledObjectList );
+                eZContentCacheManager::nodeListForObject( $object, true, eZContentCacheManager::CLEAR_DEFAULT, $assigned_nodes, $handledObjectList );
                 foreach( $assigned_nodes as $i => $nodeID )
                 {
                     $assigned_nodes[$i] = eZContentObjectTreeNode::fetch( $nodeID );
