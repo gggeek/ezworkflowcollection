@@ -1,6 +1,6 @@
 <?php
 /**
- * Workflow that will update set a new object state to any content
+ * Workflow that will update the object state of an object upon publication (from X to Y)
  *
  * @author O. Portier
  * @license Licensed under GNU General Public License v2.0. See file LICENSE
@@ -46,27 +46,24 @@ class objectStateUpdateType extends eZWorkflowEventType
         switch ( $attr )
         {
             case 'state_before':
-            {
                 $returnValue = trim( $event->attribute( 'data_int1' ) );
                 if($returnValue > 0)
                	{
-	                $returnValue = eZContentObjectState::fetchById($returnValue);
+	                $returnValue = eZContentObjectState::fetchById( $returnValue );
                 }
-            }break;
+                break;
 
             case 'state_after':
-            {
                 $returnValue = trim( $event->attribute( 'data_int2' ) );
                 if($returnValue > 0)
                	{
-	                $returnValue = eZContentObjectState::fetchById($returnValue);
+	                $returnValue = eZContentObjectState::fetchById( $returnValue );
                 }
-            }break;
+                break;
 
             case 'state_groups':
-            {
-				$returnValue = eZContentObjectStateGroup::fetchByOffset( );
-            }break;
+				$returnValue = eZContentObjectStateGroup::fetchByOffset();
+                break;
 
             default:
                 $returnValue = null;
@@ -74,7 +71,7 @@ class objectStateUpdateType extends eZWorkflowEventType
         return $returnValue;
     }
 
-    function typeFunctionalAttributes( )
+    function typeFunctionalAttributes()
     {
         return array( 'state_before',
                       'state_after',
@@ -89,37 +86,42 @@ class objectStateUpdateType extends eZWorkflowEventType
         eZDebug::writeDebug( 'Update object state for object: ' . $objectID );
 
         $object = eZContentObject::fetch( $objectID );
-        $state_before = $event->attribute('state_before');
-        $state_after = $event->attribute('state_after');
+        $state_before = $event->attribute( 'state_before' );
+        $state_after = $event->attribute( 'state_after' );
 
-        if ( $object != null && $state_before != null && $state_after != null )
+        if ( $object == null )
         {
-        	$currentStateIDArray = $object->attribute( 'state_id_array' );
-        	$canAssignStateIDList = $object->attribute( 'allowed_assign_state_id_list' );
+            eZDebug::writeError( 'Update object state failed for inexisting object: ' . $objectID, __METHOD__ );
+            return eZWorkflowType::STATUS_WORKFLOW_CANCELLED;
+        }
+        if ( $state_before == null || $state_after == null )
+        {
+            eZDebug::writeError( 'Update object state failed: badly configured states', __METHOD__ );
+            return eZWorkflowType::STATUS_WORKFLOW_CANCELLED;
+        }
 
-        	// Does the content is in before state AND Does the user is allowed to assigne the after state
-        	if(in_array($state_before->attribute('id'), $currentStateIDArray ) && in_array($state_after->attribute('id'), $canAssignStateIDList) )
-        	{
-	        	if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
+        $currentStateIDArray = $object->attribute( 'state_id_array' );
+        if ( in_array( $state_before->attribute('id'), $currentStateIDArray ) )
+        {
+            $canAssignStateIDList = $object->attribute( 'allowed_assign_state_id_list' );
+            if ( !in_array( $state_after->attribute('id'), $canAssignStateIDList ) )
+            {
+                eZDebug::writeWarning( "Not enough rights to assign state to object $objectID: " . $state_after->attribute( 'id' ) , __METHOD__ );
+            }
+            else
+            {
+                eZDebug::writeDebug( 'Changing object state from '. $state_before->attribute('name'). ' to '. $state_after->attribute( 'name' ), __METHOD__ );
+                if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
 			    {
 			        $operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
 			                                                        array( 'object_id'     => $objectID,
-			                                                               'state_id_list' => array( $state_after->attribute('id') ) ) );
+			                                                               'state_id_list' => array( $state_after->attribute( 'id' ) ) ) );
 			    }
 			    else
 			    {
-			        eZContentOperationCollection::updateObjectState( $objectID, array( $state_after->attribute('id') ) );
+			        eZContentOperationCollection::updateObjectState( $objectID, array( $state_after->attribute( 'id' ) ) );
 			    }
-			    eZDebug::writeError( 'Object state update from '. $state_before->attribute('name'). ' to '. $state_after->attribute('name') );
-        	}
-        	eZDebug::writeError( 'Object state failed from '. $state_before->attribute('name'). ' to '. $state_after->attribute('name') );
-        	eZDebug::writeError( 'Not enough rights !' );
-
-        }
-        else
-        {
-            eZDebug::writeError( 'Update object state failed for inexisting object: ' . $objectID );
-            return eZWorkflowType::STATUS_WORKFLOW_CANCELLED;
+            }
         }
         return eZWorkflowType::STATUS_ACCEPTED;
     }
@@ -151,14 +153,14 @@ class objectStateUpdateType extends eZWorkflowEventType
     	$http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$event->attribute(id);
     	$http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$event->attribute(id);
 
-		if($http->hasPostVariable( $http_input_state_before ))
+		if ( $http->hasPostVariable( $http_input_state_before ) )
 		{
-			$event->setAttribute( "data_int1", $http->postVariable($http_input_state_before) );
+			$event->setAttribute( "data_int1", $http->postVariable( $http_input_state_before ) );
 		}
 
-		if($http->hasPostVariable( $http_input_state_after ))
+		if ( $http->hasPostVariable( $http_input_state_after ) )
 		{
-			$event->setAttribute( "data_int2", $http->postVariable($http_input_state_after) );
+			$event->setAttribute( "data_int2", $http->postVariable( $http_input_state_after ) );
 		}
     }
 }
