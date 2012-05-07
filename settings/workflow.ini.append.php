@@ -9,6 +9,7 @@ ExtensionDirectories[]=ezworkflowcollection
 AvailableEventTypes[]=event_approvelocation
 AvailableEventTypes[]=event_multipublish
 AvailableEventTypes[]=event_subtreemultiplexer
+AvailableEventTypes[]=event_addurlalias
 
 # This one needs object states
 AvailableEventTypes[]=event_objectstateupdate

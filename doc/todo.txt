@@ -44,5 +44,6 @@ events that could be useful:
 - something about translating content... ?
 - change_owner
 - block editing of some attributes
+- set state to children
 - ...
 - profit!

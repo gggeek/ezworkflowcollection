@@ -46,6 +46,14 @@ Look at INSTALL file and check troubleshooting section for more info.
 Allows to move object state from X to Y upon content publishing
 
 
+"Add url alias" workflow event:
+-------------------------------------
+
+Allows to add an url alias to an object upon content publishing.
+The alias will be formed by an (user-defined) attribute of the object itself;
+it can be set to redirect internally or externally, and to be anchored at root or at parent node
+
+
 FUTURE IDEAS
 ============
 
