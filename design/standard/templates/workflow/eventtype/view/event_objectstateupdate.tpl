@@ -2,10 +2,10 @@
 
 <div class="element">
     {'Group/State before'|i18n( 'extension/ezworkflowcollection' )}:
-	{$event.state_before.group.current_translation.name}/{$event.state_before.current_translation.name}
+    {$event.state_before.group.current_translation.name}/{$event.state_before.current_translation.name}
 </div>
 
 <div class="element">
     {'Group/State after'|i18n( 'extension/ezworkflowcollection' )}:
-	{$event.state_after.group.current_translation.name}/{$event.state_after.current_translation.name}
+    {$event.state_after.group.current_translation.name}/{$event.state_after.current_translation.name}
 </div>

@@ -54,23 +54,23 @@ class expireremotecacheflowType extends eZWorkflowEventType
 
             $domains = $ini->variable( 'ExpireRemoteCacheFlowSettings', 'ExpireDomains' );
             foreach( $assigned_nodes as $assigned_node )
-    		{
+            {
                 // for every node, call eZHTTPCacheManager to clean the remote cache
-    		    $url = $assigned_node->urlAlias();
-    		    if ( is_array( $domains ) && ( count( $domains ) > 1 || ( count( $domains ) > 0 && $domains[0] != '' ) ) )
-    		    {
-    		        eZURI::transformURI( $url );
-    		        foreach( $domains as $domain )
-    		        {
-    		            eZHTTPCacheManager::execute( $domain . $url );
-    		        }
-    		    }
-    		    else
-    		    {
-    		        eZURI::transformURI( $url, false, 'full' );
-    		        eZHTTPCacheManager::execute( $url );
-    		    }
-    		}
+                $url = $assigned_node->urlAlias();
+                if ( is_array( $domains ) && ( count( $domains ) > 1 || ( count( $domains ) > 0 && $domains[0] != '' ) ) )
+                {
+                    eZURI::transformURI( $url );
+                    foreach( $domains as $domain )
+                    {
+                        eZHTTPCacheManager::execute( $domain . $url );
+                    }
+                }
+                else
+                {
+                    eZURI::transformURI( $url, false, 'full' );
+                    eZHTTPCacheManager::execute( $url );
+                }
+            }
         }
         else
         {

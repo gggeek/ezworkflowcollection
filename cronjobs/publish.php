@@ -67,35 +67,35 @@ foreach( $rootNodeIDList as $nodeID )
         // Si le contenu est à l'état Mise en ligne programmée 'publish_chain/waituntildate'
         if( in_array( $ini->variable('UpdateObjectStatesSettings', 'PendingObjectState'), $article->attribute('state_id_array') ) )
         {
-	        $dataMap = $article->attribute( 'data_map' );
+            $dataMap = $article->attribute( 'data_map' );
 
-	        $dateAttribute = $dataMap['publish_date'];
+            $dateAttribute = $dataMap['publish_date'];
 
-	        if ( $dateAttribute === null )
-	            continue;
+            if ( $dateAttribute === null )
+                continue;
 
-	        $date = $dateAttribute->content();
-	        $articleRetractDate = $date->attribute( 'timestamp' );
+            $date = $dateAttribute->content();
+            $articleRetractDate = $date->attribute( 'timestamp' );
 
-	        if ( $articleRetractDate > 0 && $articleRetractDate < $currrentDate )
-	        {
-	            $ok = "NOT-OK";
-	        	// Switch Object state to Published
-	        	if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
-				{
-					$operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
-				                                                        array( 'object_id'     => $articleNode->attribute( 'contentobject_id' ),
-				                                                               'state_id_list' => array( $targetState ) ) );
-					$ok = "OK";
-				}
-				else
-				{
-	        		eZContentOperationCollection::updateObjectState( $articleNode->attribute( 'contentobject_id' ), array( $targetState ) );
-					$ok = "OK";
-				}
+            if ( $articleRetractDate > 0 && $articleRetractDate < $currrentDate )
+            {
+                $ok = "NOT-OK";
+                // Switch Object state to Published
+                if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
+                {
+                    $operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
+                                                                        array( 'object_id'     => $articleNode->attribute( 'contentobject_id' ),
+                                                                               'state_id_list' => array( $targetState ) ) );
+                    $ok = "OK";
+                }
+                else
+                {
+                    eZContentOperationCollection::updateObjectState( $articleNode->attribute( 'contentobject_id' ), array( $targetState ) );
+                    $ok = "OK";
+                }
 
-				$cli->output(  'Archived : '.$ok.' - '.$articleNode->attribute( 'name' ) );
-	        }
+                $cli->output(  'Archived : '.$ok.' - '.$articleNode->attribute( 'name' ) );
+            }
         }
     }
 }

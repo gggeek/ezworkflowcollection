@@ -82,8 +82,8 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
 
     function content( $collaborationItem )
     {
- 		$db = eZDb::instance();
-		$taskResult = $db->arrayQuery( 'select target_node_ids from ezxapprovelocation_items where collaboration_id = ' . $collaborationItem->attribute( 'id' )  );
+        $db = eZDb::instance();
+        $taskResult = $db->arrayQuery( 'select target_node_ids from ezxapprovelocation_items where collaboration_id = ' . $collaborationItem->attribute( 'id' )  );
         return array( "content_object_id" => $collaborationItem->attribute( "data_int1" ),
                       "content_object_version" => $collaborationItem->attribute( "data_int2" ),
                       "approval_status" => $collaborationItem->attribute( "data_int3" ),

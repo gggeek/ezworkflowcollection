@@ -55,14 +55,14 @@
 </div>
 
 <div class="right"> {"List content in state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')}:
-	<select name="State" onChange="submit()">
-	{def $ignore_states = cond( ezini_hasvariable("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), ezini("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), true(), array() ) }
-	{foreach $state.group.states as $element}
-		{if $ignore_states|contains($element.id)|not}
-		<option value="{$element.id}"{if $element.id|eq($state.id)} selected="selected"{/if}>{$element.current_translation.name}</option>
-		{/if}
-	{/foreach}
-	</select>
+    <select name="State" onChange="submit()">
+    {def $ignore_states = cond( ezini_hasvariable("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), ezini("UpdateObjectStatesSettings", "IgnoreObjectStateIDList", "ezworkflowcollection.ini"), true(), array() ) }
+    {foreach $state.group.states as $element}
+        {if $ignore_states|contains($element.id)|not}
+        <option value="{$element.id}"{if $element.id|eq($state.id)} selected="selected"{/if}>{$element.current_translation.name}</option>
+        {/if}
+    {/foreach}
+    </select>
 </div>
 <div class="break"></div>
 </div>
@@ -71,7 +71,7 @@
 
 <table class="list" cellspacing="0">
 <tr>
-	<th class="tight"><img src={'toggle-button-16x16.gif'|ezimage} alt="{'Invert selection.'|i18n( 'design/admin/content/draft' )}" onclick="ezjs_toggleCheckboxes( document.listaction, 'SelectIDArray[]' ); return false;" title="{'Invert selection.'|i18n( 'design/admin/content/draft' )}" /></th>
+    <th class="tight"><img src={'toggle-button-16x16.gif'|ezimage} alt="{'Invert selection.'|i18n( 'design/admin/content/draft' )}" onclick="ezjs_toggleCheckboxes( document.listaction, 'SelectIDArray[]' ); return false;" title="{'Invert selection.'|i18n( 'design/admin/content/draft' )}" /></th>
     <th>{'Name'|i18n( 'design/admin/content/draft' )}</th>
     <th>{'Type'|i18n( 'design/admin/content/draft' )}</th>
     <th>{'Section'|i18n( 'design/admin/content/draft' )}</th>
@@ -82,7 +82,7 @@
 {def $content_object = 0}
 {section var=Content loop=$content_list sequence=array( bglight, bgdark )}
 <tr class="{$Content.sequence}">
-	{set $content_object = $Content.item.object}
+    {set $content_object = $Content.item.object}
     <td align="left" width="1"><input type="checkbox" name="SelectIDArray[]" value="{$content_object.id}"></td>
     <td>{$content_object.content_class.identifier|class_icon( small, $content_object.content_class.name|wash )}&nbsp;<a href={*concat( '/content/versionview/', $content_object.id, '/', $content_object.current_version, '/', $content_object.initial_language.locale, '/' )|ezurl*}{$Content.item.url_alias|ezurl}>{if $Content.item.name|ne('')}{$Content.item.name|wash}{else}<i>{'Unknown'|i18n( 'design/admin/content/draft' )}</i>{/if}</a></td>
     <td>{$content_object.content_class.name|wash}</td>
@@ -115,12 +115,12 @@
 <div class="block" id="update-states-list">
 
 {if $content_list|count()}
-	<label>{"Update selected content objects for following state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')}:</label>
-	<select name="TargetObjectState">
-	{foreach $state.group.states as $element}
-		<option value="{$element.id}"{if $element.id|eq($state.id)} selected="selected"{/if}>{$element.current_translation.name}</option>
-	{/foreach}
-	</select>
+    <label>{"Update selected content objects for following state"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')}:</label>
+    <select name="TargetObjectState">
+    {foreach $state.group.states as $element}
+        <option value="{$element.id}"{if $element.id|eq($state.id)} selected="selected"{/if}>{$element.current_translation.name}</option>
+    {/foreach}
+    </select>
     <input id="set-state-button" class="button" type="submit" name="UpdateObjectStateButton" value="{"Update"|i18n('extension/ezworkflowcollection/design/admin/updatestate/list')}" />
 
 <script type="text/javascript">
@@ -139,7 +139,7 @@
 {/literal}
 </script>
 {else}
-	&nbsp;
+    &nbsp;
 {/if}
 
 </div>

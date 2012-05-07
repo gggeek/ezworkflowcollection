@@ -77,21 +77,21 @@ foreach( $rootNodeIDList as $nodeID )
         if ( $articleRetractDate > 0 && $articleRetractDate < $currrentDate )
         {
             $ok = "NOT-OK";
-        	// Switch Object state to Archived
-        	if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
-			{
-				$operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
-			                                                        array( 'object_id'     => $articleNode->attribute( 'contentobject_id' ),
-			                                                               'state_id_list' => array( $targetState ) ) );
-				$ok = "OK";
-			}
-			else
-			{
-        		eZContentOperationCollection::updateObjectState( $articleNode->attribute( 'contentobject_id' ), array( $targetState ) );
-				$ok = "OK";
-			}
+            // Switch Object state to Archived
+            if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
+            {
+                $operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
+                                                                    array( 'object_id'     => $articleNode->attribute( 'contentobject_id' ),
+                                                                           'state_id_list' => array( $targetState ) ) );
+                $ok = "OK";
+            }
+            else
+            {
+                eZContentOperationCollection::updateObjectState( $articleNode->attribute( 'contentobject_id' ), array( $targetState ) );
+                $ok = "OK";
+            }
 
-			$cli->output(  'Archived : '.$ok.' - '.$articleNode->attribute( 'name' ) );
+            $cli->output(  'Archived : '.$ok.' - '.$articleNode->attribute( 'name' ) );
         }
     }
 }

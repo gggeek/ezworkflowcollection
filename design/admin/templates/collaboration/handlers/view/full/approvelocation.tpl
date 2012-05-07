@@ -10,9 +10,9 @@
 {* Recover from target node ids, the full content nodes *}
 {def $target_nodes = array()}
 {if and( is_set($collab_item.content.target_node_ids), $collab_item.content.target_node_ids|count()|gt(0) ) }
-	{foreach $collab_item.content.target_node_ids as $target_node_id}
-		{set $target_nodes = $target_nodes|append(fetch('content', 'node', hash('node_id', $target_node_id ) ) ) }
-	{/foreach}
+    {foreach $collab_item.content.target_node_ids as $target_node_id}
+        {set $target_nodes = $target_nodes|append(fetch('content', 'node', hash('node_id', $target_node_id ) ) ) }
+    {/foreach}
 {/if}
 {if $content_version|null()|not()}
   {set-block variable=contentobject_link}
@@ -22,10 +22,10 @@
 
 {set-block variable=target_node_links}
 {if $target_nodes|count()|gt(0)}
-	{foreach $target_nodes as $target_node}
-	    {node_view_gui view=text_linked content_node=$target_node}
-	    {delimiter}, {/delimiter}
-	{/foreach}
+    {foreach $target_nodes as $target_node}
+        {node_view_gui view=text_linked content_node=$target_node}
+        {delimiter}, {/delimiter}
+    {/foreach}
 {/if}
 {/set-block}
 <table cellspacing="4" cellpadding="4" border="0">
@@ -98,7 +98,7 @@
   <td rowspan="2" valign="top">
 
 {if $content_version|null()|not()}
-	{node_view_gui view=plain content_node=$content_version.main_node}
+    {node_view_gui view=plain content_node=$content_version.main_node}
 {/if}
 
   </td>

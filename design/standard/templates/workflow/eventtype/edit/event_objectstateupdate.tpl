@@ -6,16 +6,16 @@
     <select id="before_{$event.id}" name="WorkflowEvent_event_objectstateupdate_group_before_{$event.id}" size="5">
         {foreach $event.state_groups as $group}
             {if $group.is_internal|not}
-        	<option value="{$group.id}"{if $event.state_before.group_id|eq( $group.id )} selected="selected"{/if}>{$group.current_translation.name|wash}</option>
-        	{/if}
+            <option value="{$group.id}"{if $event.state_before.group_id|eq( $group.id )} selected="selected"{/if}>{$group.current_translation.name|wash}</option>
+            {/if}
         {/foreach}
     </select>
     {foreach $event.state_groups as $group}
     {if $group.is_internal|not}
     <select id="before_{$event.id}_{$group.id}" name="WorkflowEvent_event_objectstateupdate_state_before_{$event.id}" size="5"{if $event.state_before.group_id|eq( $group.id )|not()} style="display:hidden;"{/if}>
-    	{foreach $group.states as $state}
-    	<option value="{$state.id}"{if $event.state_before.id|eq( $state.id )} selected="selected"{/if}>{$state.current_translation.name|wash}</option>
-    	{/foreach}
+        {foreach $group.states as $state}
+        <option value="{$state.id}"{if $event.state_before.id|eq( $state.id )} selected="selected"{/if}>{$state.current_translation.name|wash}</option>
+        {/foreach}
     </select>
     {/if}
     {/foreach}
@@ -26,16 +26,16 @@
     <select id="after_{$event.id}" name="WorkflowEvent_event_objectstateupdate_group_after_{$event.id}" size="5">
         {foreach $event.state_groups as $group}
             {if $group.is_internal|not}
-        	<option value="{$group.id}"{if $event.state_after.group_id|eq( $group.id )} selected="selected"{/if}>{$group.current_translation.name|wash}</option>
-        	{/if}
+            <option value="{$group.id}"{if $event.state_after.group_id|eq( $group.id )} selected="selected"{/if}>{$group.current_translation.name|wash}</option>
+            {/if}
         {/foreach}
     </select>
     {foreach $event.state_groups as $group}
     {if $group.is_internal|not}
     <select id="after_{$event.id}_{$group.id}"  name="WorkflowEvent_event_objectstateupdate_state_after_{$event.id}" size="5"{if $event.state_after.group_id|eq( $group.id )|not()} style="display:hidden;"{/if}>
-    	{foreach $group.states as $state}
-    	<option value="{$state.id}"{if $event.state_after.id|eq( $state.id )} selected="selected"{/if}>{$state.current_translation.name|wash}</option>
-    	{/foreach}
+        {foreach $group.states as $state}
+        <option value="{$state.id}"{if $event.state_after.id|eq( $state.id )} selected="selected"{/if}>{$state.current_translation.name|wash}</option>
+        {/foreach}
     </select>
     {/if}
     {/foreach}
@@ -48,6 +48,6 @@
 
 
 <script type="text/javascript">
-//	updateList({$event.id}, {$event.state_before.group_id}, {$event.state_after.group_id});
-	updateList({$event.id});
+//    updateList({$event.id}, {$event.state_before.group_id}, {$event.state_after.group_id});
+    updateList({$event.id});
 </script>

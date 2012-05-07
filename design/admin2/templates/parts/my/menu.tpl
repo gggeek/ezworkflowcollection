@@ -5,7 +5,7 @@
     'my_notifications',   'My notification settings'|i18n( 'design/admin/parts/my/menu' ),
     'my_bookmarks',       'My bookmarks'|i18n( 'design/admin/parts/my/menu' ),
     'collaboration',      'Collaboration'|i18n( 'design/admin/parts/my/menu' ),
-    'updatestate',		  'Update states'|i18n( 'extension/ezworkflowcollection/admin/parts/my/menu' ),
+    'updatestate',        'Update states'|i18n( 'extension/ezworkflowcollection/admin/parts/my/menu' ),
     'change_password',    'Change password'|i18n( 'design/admin/parts/my/menu' ),
     'my_shopping_basket', 'My shopping basket'|i18n( 'design/admin/parts/my/menu' ),
     'my_wish_list',       'My wish list'|i18n( 'design/admin/parts/my/menu' ),

@@ -180,51 +180,51 @@ class addUrlAliasType extends eZWorkflowEventType
                 return (bool) $event->attribute( 'data_int1' );
 
             case 'at_root':
-				return (bool) $event->attribute( 'data_int2' );
+                return (bool) $event->attribute( 'data_int2' );
         }
         return null;
     }
 
     function validateHTTPInput( $http, $base, $event, &$validation )
     {
-    	$http_input_sa = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_source_attribute_' . $event->attribute( 'id' );
-    	$http_input_er = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_external_redirect_' . $event->attribute( 'id' );
+        $http_input_sa = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_source_attribute_' . $event->attribute( 'id' );
+        $http_input_er = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_external_redirect_' . $event->attribute( 'id' );
         $http_input_ar = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_at_root_' . $event->attribute( 'id' );
 
         /// @todo add more validation for _er and _ar: should be bool values...
         if( $http->hasPostVariable( $http_input_sa ) /*&& ( !$http->hasPostVariable( $http_input_state_er ) || $http->hasPostVariable( $http_input_group_after) && $http->hasPostVariable($http_input_state_after)*/ )
         {
-	        $returnState = eZInputValidator::STATE_ACCEPTED;
+            $returnState = eZInputValidator::STATE_ACCEPTED;
         }
         else
         {
-	    	$returnState = eZInputValidator::STATE_INVALID;
-	        //$reason[ 'text' ] = "Select at least one group, then one state.";
+            $returnState = eZInputValidator::STATE_INVALID;
+            //$reason[ 'text' ] = "Select at least one group, then one state.";
         }
 
-    	return $returnState;
+        return $returnState;
     }
 
     function fetchHTTPInput( $http, $base, $event )
     {
-    	$http_input_sa = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_source_attribute_' . $event->attribute( 'id' );
-    	$http_input_er = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_external_redirect_' . $event->attribute( 'id' );
+        $http_input_sa = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_source_attribute_' . $event->attribute( 'id' );
+        $http_input_er = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_external_redirect_' . $event->attribute( 'id' );
         $http_input_ar = $base . '_event_' . self::WORKFLOW_TYPE_STRING . '_at_root_' . $event->attribute( 'id' );
 
-		if ( $http->hasPostVariable( $http_input_sa ) )
-		{
-			$event->setAttribute( "data_text1", $http->postVariable( $http_input_sa ) );
-		}
+        if ( $http->hasPostVariable( $http_input_sa ) )
+        {
+            $event->setAttribute( "data_text1", $http->postVariable( $http_input_sa ) );
+        }
 
-		if ( $http->hasPostVariable( $http_input_er ) )
-		{
-			$event->setAttribute( "data_int1", (bool) $http->postVariable( $http_input_er ) );
-		}
+        if ( $http->hasPostVariable( $http_input_er ) )
+        {
+            $event->setAttribute( "data_int1", (bool) $http->postVariable( $http_input_er ) );
+        }
 
         if ( $http->hasPostVariable( $http_input_ar ) )
-		{
-			$event->setAttribute( "data_int2", (bool) $http->postVariable( $http_input_ar ) );
-		}
+        {
+            $event->setAttribute( "data_int2", (bool) $http->postVariable( $http_input_ar ) );
+        }
     }
 }
 

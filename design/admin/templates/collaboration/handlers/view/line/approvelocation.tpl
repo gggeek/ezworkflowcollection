@@ -9,9 +9,9 @@
 {* Recover from target node ids, the full content nodes *}
 {def $target_nodes = array()}
 {if and( is_set($item.content.target_node_ids), $item.content.target_node_ids|count()|gt(0) ) }
-	{foreach $item.content.target_node_ids as $target_node_id}
-		{set $target_nodes = $target_nodes|append(fetch('content', 'node', hash('node_id', $target_node_id ) ) ) }
-	{/foreach}
+    {foreach $item.content.target_node_ids as $target_node_id}
+        {set $target_nodes = $target_nodes|append(fetch('content', 'node', hash('node_id', $target_node_id ) ) ) }
+    {/foreach}
 {/if}
 
 {switch match=$item.data_int3}
@@ -32,8 +32,8 @@
 {/switch}
 <p class="{$:item_class}"><a class="{$:item_class}" href={concat("collaboration/item/full/",$:item.id)|ezurl}>{$item_text}</a> {'in'|i18n('design/standard/collaboration/handler/view/line/approvelocation')}
 {foreach $target_nodes as $target_node}
-	<a href={$target_node.url_alias|ezurl()}>{$target_node.name|wash()}</a>
- 	{delimiter}, {/delimiter}
+    <a href={$target_node.url_alias|ezurl()}>{$target_node.name|wash()}</a>
+     {delimiter}, {/delimiter}
 {/foreach}
 </p>
 {/let}

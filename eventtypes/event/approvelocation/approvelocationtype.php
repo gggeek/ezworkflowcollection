@@ -12,7 +12,7 @@ include_once( 'kernel/common/i18n.php' );
 class approveLocationType extends eZApproveType
 {
 
-	const WORKFLOW_TYPE_STRING = "approvelocation";
+    const WORKFLOW_TYPE_STRING = "approvelocation";
 
    function approveLocationType()
     {
@@ -120,9 +120,9 @@ class approveLocationType extends eZApproveType
         return eZWorkflowEventType::attribute( $attr );
     }
 
-	function execute( $process, $event )
+    function execute( $process, $event )
     {
-     	eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $process, 'approveLocationType::execute' );
+         eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $process, 'approveLocationType::execute' );
         eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $event, 'approveLocationType::execute' );
         $parameters = $process->attribute( 'parameter_list' );
         $userID = $parameters['user_id'];
@@ -140,10 +140,10 @@ class approveLocationType extends eZApproveType
             eZDebugSetting::writeError( 'ezworkflowcollection-workflow-approve-location', "No version for object with ID $objectID", 'approveLocationType::execute' );
             return eZWorkflowType::STATUS_WORKFLOW_CANCELLED;
         }
-		else
-		{
-			$versionID = $version->attribute('version');
-		}
+        else
+        {
+            $versionID = $version->attribute('version');
+        }
 
         // version option checking
         $version_option = $event->attribute( 'version_option' );
@@ -154,12 +154,12 @@ class approveLocationType extends eZApproveType
         }
 
         // Target nodes
-		$targetNodeIDs = $parameters['select_node_id_array'];
-		if( !is_array($targetNodeIDs) or
-			count($targetNodeIDs) == 0 )
-		{
+        $targetNodeIDs = $parameters['select_node_id_array'];
+        if( !is_array($targetNodeIDs) or
+            count($targetNodeIDs) == 0 )
+        {
             return eZWorkflowType::STATUS_WORKFLOW_CANCELLED;
-		}
+        }
 
         /*
           Check userID or get user_id from process object
@@ -267,41 +267,41 @@ class approveLocationType extends eZApproveType
             eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $process->attribute( 'event_state'), 'approve $process->attribute( \'event_state\')' );
 
             if( count( $taskResult ) > 0 && $taskResult[0]['collaboration_id'] !== false )
-			{
-				$collaborationID = $taskResult[0]['collaboration_id'];
+            {
+                $collaborationID = $taskResult[0]['collaboration_id'];
 
-				$status = eZWorkflowType::STATUS_DEFERRED_TO_CRON_REPEAT;
+                $status = eZWorkflowType::STATUS_DEFERRED_TO_CRON_REPEAT;
 
-				if( $process->attribute( 'event_state') == self::COLLABORATION_NOT_CREATED )
-	            {
-	                approveLocationCollaborationHandler::activateApproval( $collaborationID );
-	                $this->setInformation( "We are going to create again approval" );
-	                $process->setAttribute( 'event_state', self::COLLABORATION_CREATED );
-	                $process->store();
-	                eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $this, 'approve re-execute' );
-	                $status = eZWorkflowType::STATUS_DEFERRED_TO_CRON_REPEAT;
-	            }
-	            else //approveLocationType::COLLABORATION_CREATED
-	            {
-	                $this->setInformation( "we are checking approval now" );
-	                eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $event, 'check approval' );
+                if( $process->attribute( 'event_state') == self::COLLABORATION_NOT_CREATED )
+                {
+                    approveLocationCollaborationHandler::activateApproval( $collaborationID );
+                    $this->setInformation( "We are going to create again approval" );
+                    $process->setAttribute( 'event_state', self::COLLABORATION_CREATED );
+                    $process->store();
+                    eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $this, 'approve re-execute' );
+                    $status = eZWorkflowType::STATUS_DEFERRED_TO_CRON_REPEAT;
+                }
+                else //approveLocationType::COLLABORATION_CREATED
+                {
+                    $this->setInformation( "we are checking approval now" );
+                    eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $event, 'check approval' );
 
-	                $status = $this->checkApproveCollaboration(  $process, $event,  $collaborationID );
-	            }
+                    $status = $this->checkApproveCollaboration(  $process, $event,  $collaborationID );
+                }
 
-				return $status;
-			}
-	    	else
-	    	{
-	            eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $targetNodeIDs, 'NodeIDs to approve' );
-	            $this->createApproveCollaboration( $process, $event, $userID, $object->attribute( 'id' ), $versionID, $approveUserIDArray );
+                return $status;
+            }
+            else
+            {
+                eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $targetNodeIDs, 'NodeIDs to approve' );
+                $this->createApproveCollaboration( $process, $event, $userID, $object->attribute( 'id' ), $versionID, $approveUserIDArray );
                 $this->setInformation( "We are going to create approval" );
                 $process->setAttribute( 'event_state', self::COLLABORATION_CREATED );
                 $process->store();
                 eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $this, 'approve execute' );
                 return eZWorkflowType::STATUS_DEFERRED_TO_CRON_REPEAT;
-	        }
-    	}
+            }
+        }
         else
         {
             eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $workflowSections , "we are not going to create approval " . $object->attribute( 'section_id') );
@@ -315,7 +315,7 @@ class approveLocationType extends eZApproveType
     }
 
 
-	function validateUserIDList( $userIDList, &$reason )
+    function validateUserIDList( $userIDList, &$reason )
     {
         $returnState = eZInputValidator::STATE_ACCEPTED;
         foreach ( $userIDList as $userID )
@@ -572,8 +572,8 @@ class approveLocationType extends eZApproveType
 
     function createApproveCollaboration( $process, $event, $userID, $contentobjectID, $contentobjectVersion, $editors )
     {
-	 	$parameters = $process->attribute( 'parameter_list' );
-    	$targetNodeIDs = $parameters['select_node_id_array'];
+         $parameters = $process->attribute( 'parameter_list' );
+        $targetNodeIDs = $parameters['select_node_id_array'];
         if ( $editors === null )
             return false;
         $authorID = $userID;
@@ -591,11 +591,11 @@ class approveLocationType extends eZApproveType
         $db = eZDb::instance();
         if( $collaborationID > 0 )
         {
-        	$taskResult = $db->arrayQuery( 'select workflow_process_id, collaboration_id, target_node_ids from ezxapprovelocation_items where collaboration_id = ' . $collaborationID  );
+            $taskResult = $db->arrayQuery( 'select workflow_process_id, collaboration_id, target_node_ids from ezxapprovelocation_items where collaboration_id = ' . $collaborationID  );
         }
         else
         {
-        	$taskResult = $db->arrayQuery( 'select workflow_process_id, collaboration_id, target_node_ids from ezxapprovelocation_items where workflow_process_id = ' . $process->attribute( 'id' )  );
+            $taskResult = $db->arrayQuery( 'select workflow_process_id, collaboration_id, target_node_ids from ezxapprovelocation_items where workflow_process_id = ' . $process->attribute( 'id' )  );
         }
 
         $collaborationID = $taskResult[0]['collaboration_id'];
@@ -630,7 +630,7 @@ class approveLocationType extends eZApproveType
 
         if ( $approvalStatus != approveLocationCollaborationHandler::STATUS_DEFERRED )
         {
-        	$db->query( 'DELETE FROM ezxapprovelocation_items WHERE workflow_process_id = ' . $process->attribute( 'id' )  );
+            $db->query( 'DELETE FROM ezxapprovelocation_items WHERE workflow_process_id = ' . $process->attribute( 'id' )  );
         }
 
         return $status;

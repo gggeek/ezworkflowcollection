@@ -70,11 +70,11 @@ class multiPublishType extends eZWorkflowEventType
 
             // get list of nodes this object is already child of
             $assigned_nodes = $object->attribute( 'assigned_nodes' );
-    		foreach( $assigned_nodes as $assigned_node )
-    		{
-    			$parent = $assigned_node->attribute( 'parent' );
-    			$parents[] = $parent->attribute( 'node_id' );
-    		}
+            foreach( $assigned_nodes as $assigned_node )
+            {
+                $parent = $assigned_node->attribute( 'parent' );
+                $parents[] = $parent->attribute( 'node_id' );
+            }
 
             // get list of target nodes for this event
             // NB: even if adding a location fails, we go on with the workflow, and merely log the error
@@ -93,12 +93,12 @@ class multiPublishType extends eZWorkflowEventType
                     if ( $target != null )
                     {
                         eZDebug::writeDebug( 'MultiPublish event adding location ' . $targetnode );
-            			// assign object to node
-        			    $nodeAssignment = $object->addLocation( $targetnode );
-            			if( !$nodeAssignment )
-            			{
-            				 eZDebug::writeError( 'MultiPublish event failed to add object ' . $objectId . ' to node ' . $targetnode );
-            			}
+                        // assign object to node
+                        $nodeAssignment = $object->addLocation( $targetnode );
+                        if( !$nodeAssignment )
+                        {
+                             eZDebug::writeError( 'MultiPublish event failed to add object ' . $objectId . ' to node ' . $targetnode );
+                        }
                     }
                     else
                     {

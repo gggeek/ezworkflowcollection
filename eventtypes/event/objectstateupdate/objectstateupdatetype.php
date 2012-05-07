@@ -57,15 +57,15 @@ class objectStateUpdateType extends eZWorkflowEventType
             {
                 eZDebug::writeDebug( 'Changing object state from '. $state_before->attribute('name'). ' to '. $state_after->attribute( 'name' ), __METHOD__ );
                 if ( eZOperationHandler::operationIsAvailable( 'content_updateobjectstate' ) )
-			    {
-			        $operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
-			                                                        array( 'object_id'     => $objectID,
-			                                                               'state_id_list' => array( $state_after->attribute( 'id' ) ) ) );
-			    }
-			    else
-			    {
-			        eZContentOperationCollection::updateObjectState( $objectID, array( $state_after->attribute( 'id' ) ) );
-			    }
+                {
+                    $operationResult = eZOperationHandler::execute( 'content', 'updateobjectstate',
+                                                                    array( 'object_id'     => $objectID,
+                                                                           'state_id_list' => array( $state_after->attribute( 'id' ) ) ) );
+                }
+                else
+                {
+                    eZContentOperationCollection::updateObjectState( $objectID, array( $state_after->attribute( 'id' ) ) );
+                }
             }
         }
         return eZWorkflowType::STATUS_ACCEPTED;
@@ -112,16 +112,16 @@ class objectStateUpdateType extends eZWorkflowEventType
             case 'state_before':
                 $returnValue = $event->attribute( 'data_int1' );
                 if ( $returnValue > 0 )
-               	{
-	                return eZContentObjectState::fetchById( $returnValue );
+                   {
+                    return eZContentObjectState::fetchById( $returnValue );
                 }
                 break;
 
             case 'state_after':
                 $returnValue = $event->attribute( 'data_int2' );
                 if ( $returnValue > 0 )
-               	{
-	                return eZContentObjectState::fetchById( $returnValue );
+                {
+                    return eZContentObjectState::fetchById( $returnValue );
                 }
                 break;
         }
@@ -136,31 +136,31 @@ class objectStateUpdateType extends eZWorkflowEventType
         if( $http->hasPostVariable( $http_input_state_before ) && $http->hasPostVariable( $http_input_state_after ) )
         {
             /// @todo check that the states are integers
-	        $returnState = eZInputValidator::STATE_ACCEPTED;
+            $returnState = eZInputValidator::STATE_ACCEPTED;
         }
         else
         {
-	    	$returnState = eZInputValidator::STATE_INVALID;
-	        $reason[ 'text' ] = "Select at least one before state and one after state.";
+            $returnState = eZInputValidator::STATE_INVALID;
+            $reason[ 'text' ] = "Select at least one before state and one after state.";
         }
 
-    	return $returnState;
+        return $returnState;
     }
 
     function fetchHTTPInput( $http, $base, $event )
     {
-    	$http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$event->attribute( 'id' );
-    	$http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$event->attribute( 'id' );
+        $http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$event->attribute( 'id' );
+        $http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$event->attribute( 'id' );
 
-		if ( $http->hasPostVariable( $http_input_state_before ) )
-		{
-			$event->setAttribute( "data_int1", $http->postVariable( $http_input_state_before ) );
-		}
+        if ( $http->hasPostVariable( $http_input_state_before ) )
+        {
+            $event->setAttribute( "data_int1", $http->postVariable( $http_input_state_before ) );
+        }
 
-		if ( $http->hasPostVariable( $http_input_state_after ) )
-		{
-			$event->setAttribute( "data_int2", $http->postVariable( $http_input_state_after ) );
-		}
+        if ( $http->hasPostVariable( $http_input_state_after ) )
+        {
+            $event->setAttribute( "data_int2", $http->postVariable( $http_input_state_after ) );
+        }
     }
 }
 
