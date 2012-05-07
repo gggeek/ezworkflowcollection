@@ -6,76 +6,21 @@
  * @license Licensed under GNU General Public License v2.0. See file LICENSE
  * @copyright (C) O. Portier 2010-2012
  *
- * @todo we could add some option and limitations to check initial object state and update it from the new state
- * 		 configured from the administration interface, with the workflow event editing
+ * @todo we could optionally disable perms checking for state change
+ * @todo find out if this is useful on other triggers too
  */
+
 include_once( 'kernel/common/i18n.php' );
 
 class objectStateUpdateType extends eZWorkflowEventType
 {
     const WORKFLOW_TYPE_STRING = 'objectstateupdate';
 
-    // register workflow event as available for post-publish only
+    /// Register workflow event as available for post-publish only
     function __construct()
     {
         $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'extension/ezworkflowobjectstate', 'Object state update' ) );
         $this->setTriggerTypes( array( 'content' => array( 'publish' => array ( 'after' ) ) ) );
-    }
-
-    function attributes()
-    {
-        return array_merge( array( 'state_before',
-                                   'state_after',
-                                   'stat_groups' ),
-                            eZWorkflowEventType::attributes() );
-
-    }
-
-    function hasAttribute( $attr )
-    {
-        return in_array( $attr, $this->attributes() );
-    }
-
-    function attribute( $attr )
-    {
-        return eZWorkflowEventType::attribute( $attr );
-    }
-
-    function attributeDecoder( $event, $attr )
-    {
-        switch ( $attr )
-        {
-            case 'state_before':
-                $returnValue = trim( $event->attribute( 'data_int1' ) );
-                if($returnValue > 0)
-               	{
-	                $returnValue = eZContentObjectState::fetchById( $returnValue );
-                }
-                break;
-
-            case 'state_after':
-                $returnValue = trim( $event->attribute( 'data_int2' ) );
-                if($returnValue > 0)
-               	{
-	                $returnValue = eZContentObjectState::fetchById( $returnValue );
-                }
-                break;
-
-            case 'state_groups':
-				$returnValue = eZContentObjectStateGroup::fetchByOffset();
-                break;
-
-            default:
-                $returnValue = null;
-        }
-        return $returnValue;
-    }
-
-    function typeFunctionalAttributes()
-    {
-        return array( 'state_before',
-                      'state_after',
-                      'state_groups' );
     }
 
     function execute( $process, $event )
@@ -126,23 +71,77 @@ class objectStateUpdateType extends eZWorkflowEventType
         return eZWorkflowType::STATUS_ACCEPTED;
     }
 
+        /// fixed attributes
+
+    function attributes()
+    {
+        return array_merge( array( 'state_groups' ),
+                            eZWorkflowEventType::attributes() );
+
+    }
+
+    /*function hasAttribute( $attr )
+    {
+        return in_array( $attr, $this->attributes() );
+    }*/
+
+    function attribute( $attr )
+    {
+        switch( $attr )
+        {
+            case 'state_group';
+                return eZContentObjectStateGroup::fetchByOffset();
+            default:
+                return eZWorkflowEventType::attribute( $attr );
+        }
+
+    }
+
+    /// per-event attributes
+
+    function typeFunctionalAttributes()
+    {
+        return array( 'state_before',
+                      'state_after' );
+    }
+
+    function attributeDecoder( $event, $attr )
+    {
+        switch ( $attr )
+        {
+            case 'state_before':
+                $returnValue = $event->attribute( 'data_int1' );
+                if ( $returnValue > 0 )
+               	{
+	                return eZContentObjectState::fetchById( $returnValue );
+                }
+                break;
+
+            case 'state_after':
+                $returnValue = $event->attribute( 'data_int2' );
+                if ( $returnValue > 0 )
+               	{
+	                return eZContentObjectState::fetchById( $returnValue );
+                }
+                break;
+        }
+        return null;
+    }
+
     function validateHTTPInput( $http, $base, $workflowEvent, &$validation )
     {
-        $http_input_group_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_group_before_'.$workflowEvent->attribute(id);
-        $http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$workflowEvent->attribute(id);
+        $http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$workflowEvent->attribute( 'id' );
+        $http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$workflowEvent->attribute( 'id' );
 
-        $http_input_group_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_group_after_'.$workflowEvent->attribute(id);
-        $http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$workflowEvent->attribute(id);
-
-
-        if( $http->hasPostVariable($http_input_group_before) && $http->hasPostVariable($http_input_state_before) && $http->hasPostVariable($http_input_group_after) && $http->hasPostVariable($http_input_state_after) )
+        if( $http->hasPostVariable( $http_input_state_before ) && $http->hasPostVariable( $http_input_state_after ) )
         {
+            /// @todo check that the states are integers
 	        $returnState = eZInputValidator::STATE_ACCEPTED;
         }
         else
         {
 	    	$returnState = eZInputValidator::STATE_INVALID;
-	        $reason[ 'text' ] = "Select at least one group, then one state.";
+	        $reason[ 'text' ] = "Select at least one before state and one after state.";
         }
 
     	return $returnState;
@@ -150,8 +149,8 @@ class objectStateUpdateType extends eZWorkflowEventType
 
     function fetchHTTPInput( $http, $base, $event )
     {
-    	$http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$event->attribute(id);
-    	$http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$event->attribute(id);
+    	$http_input_state_before = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_before_'.$event->attribute( 'id' );
+    	$http_input_state_after = $base.'_event_'.self::WORKFLOW_TYPE_STRING.'_state_after_'.$event->attribute( 'id' );
 
 		if ( $http->hasPostVariable( $http_input_state_before ) )
 		{
