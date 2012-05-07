@@ -1,10 +1,14 @@
 <?php
 /**
-* Workflow event to add a 2nd url-alias to a node based on an attribute
-*
-* @todo add support for <att1> <att2> syntax
-* @todo use class/attribute picker in gui
-*/
+ * Workflow event to add a 2nd url-alias to a node based on an attribute
+ *
+ * @author G. Giunta
+ * @license Licensed under GNU General Public License v2.0. See file LICENSE
+ * @copyright (C) G. Giunta 2012
+ *
+ * @todo add support for "<att1> <att2>" syntax just as in object name definition
+ * @todo use class/attribute picker in gui
+ */
 
 class addUrlAliasType extends eZWorkflowEventType
 {
