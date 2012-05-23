@@ -1,7 +1,13 @@
-Changes to 0.5 - released 2012/xx/yy
+Changes to 0.5 - released 2012/5/23
 
 Bugfix:
 . compatibility with eZP 4.5 and later
 . bug in template when editing subtree multiplexer event
 . bug (fatal error) in expireremotecacheflow event
 . improve the url generated for cache clearing in expireremotecacheflow event (use urlalias instead of path_identification_string)
+
+New:
+. added a new workflow event type: add url alias
+. added a new workflow event type: copy children on add location
+. added a new workflow event type: copy node to all parent locations
+
