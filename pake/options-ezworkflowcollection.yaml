@@ -12,6 +12,7 @@ version:
 create:
     zip: yes
     tarball: no
+    doxygen_doc: yes
 
 # ezpublish properties
 ezp:
