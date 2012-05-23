@@ -10,6 +10,8 @@ AvailableEventTypes[]=event_approvelocation
 AvailableEventTypes[]=event_multipublish
 AvailableEventTypes[]=event_subtreemultiplexer
 AvailableEventTypes[]=event_addurlalias
+AvailableEventTypes[]=event_copychildrenonaddlocation
+AvailableEventTypes[]=event_copynodetoallparentlocations
 
 # This one needs object states
 AvailableEventTypes[]=event_objectstateupdate
