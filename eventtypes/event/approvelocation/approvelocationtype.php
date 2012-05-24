@@ -7,7 +7,7 @@
  * @copyright (C) O. Portier 2010-2012
  */
 
-include_once( 'kernel/common/i18n.php' );
+//include_once( 'kernel/common/i18n.php' );
 
 class approveLocationType extends eZApproveType
 {

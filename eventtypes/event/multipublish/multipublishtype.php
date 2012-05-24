@@ -9,7 +9,8 @@
  * @todo verify it this workflow event can work as pre-publish too
  * @todo use a static nclass var for storing data in-between function calls instead of $globals
  */
-include_once( 'kernel/common/i18n.php' );
+
+//include_once( 'kernel/common/i18n.php' );
 
 class multiPublishType extends eZWorkflowEventType
 {

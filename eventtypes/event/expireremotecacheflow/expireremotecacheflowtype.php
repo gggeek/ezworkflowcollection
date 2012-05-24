@@ -10,7 +10,8 @@
  * @todo we could loop on all attributes on an object and skip execution if we find an ezpage,
  *       as it does the same on its own...
  */
-include_once( 'kernel/common/i18n.php' );
+
+//include_once( 'kernel/common/i18n.php' );
 
 class expireremotecacheflowType extends eZWorkflowEventType
 {

@@ -10,7 +10,7 @@
  * @todo find out if this is useful on other triggers too
  */
 
-include_once( 'kernel/common/i18n.php' );
+//include_once( 'kernel/common/i18n.php' );
 
 class objectStateUpdateType extends eZWorkflowEventType
 {

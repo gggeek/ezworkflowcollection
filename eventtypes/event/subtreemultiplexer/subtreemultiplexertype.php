@@ -5,7 +5,8 @@
  * @license Licensed under GNU General Public License v2.0. See file LICENSE
  * @copyright (C) G. Giunta 2010-2012
  */
-include_once( 'kernel/common/i18n.php' );
+
+//include_once( 'kernel/common/i18n.php' );
 
 class SubTreeMultiplexerType extends eZWorkflowEventType
 {
