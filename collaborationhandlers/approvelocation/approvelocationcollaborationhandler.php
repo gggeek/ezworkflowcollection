@@ -1,51 +1,23 @@
 <?php
-//
-// Definition of approveLocationCollaborationHandler class
-//
-// Created on: <12-Mar-2010 14:31:11 op>
-//
-// ## BEGIN COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
-// SOFTWARE NAME: eZ Publish
-// SOFTWARE RELEASE: 4.3.0
-// COPYRIGHT NOTICE: Copyright (C) 1999-2010 eZ Systems AS
-// SOFTWARE LICENSE: GNU General Public License v2.0
-// NOTICE: >
-//   This program is free software; you can redistribute it and/or
-//   modify it under the terms of version 2.0  of the GNU General
-//   Public License as published by the Free Software Foundation.
-//
-//   This program is distributed in the hope that it will be useful,
-//   but WITHOUT ANY WARRANTY; without even the implied warranty of
-//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//   GNU General Public License for more details.
-//
-//   You should have received a copy of version 2.0 of the GNU General
-//   Public License along with this program; if not, write to the Free
-//   Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-//   MA 02110-1301, USA.
-//
-//
-// ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
-//
+/**
+ *
+ * @author O. Portier
+ * @license Licensed under GNU General Public License v2.0. See file LICENSE
+ * @copyright (C) O. Portier 2010-2012
+ */
 
-/*! \file
-*/
+//require_once( 'kernel/common/i18n.php' );
 
-/*!
-  \class approveLocationCollaborationHandler approvelocationcollaborationhandler.php
-  \brief Handles approval communication using the collaboration system
-
-  The handler uses the fields data_int1, data_int2 and data_int3 to store
-  information on the contentobject and the approval status.
-
-  - data_int1 - The content object ID
-  - data_int2 - The content object version
-  - data_int3 - The status of the approval, see defines.
-
-*/
-
-require_once( 'kernel/common/i18n.php' );
-
+/**
+ * Handles approval communication using the collaboration system
+ *
+ * The handler uses the fields data_int1, data_int2 and data_int3 to store
+ * information on the contentobject and the approval status.
+ *
+ *  - data_int1 - The content object ID
+ *  - data_int2 - The content object version
+ *  - data_int3 - The status of the approval, see defines.
+ */
 class approveLocationCollaborationHandler extends eZCollaborationItemHandler
 {
     /// Approval message type
@@ -104,9 +76,9 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
             return false;
     }
 
-    /*!
-     \return the content object version object for the collaboration item \a $collaborationItem
-    */
+    /**
+     * @return the content object version object for the collaboration item \a $collaborationItem
+     */
     static function contentObjectVersion( $collaborationItem )
     {
         $contentObjectID = $collaborationItem->contentAttribute( 'content_object_id' );
@@ -114,35 +86,34 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
         return eZContentObjectVersion::fetchVersion( $contentObjectVersion, $contentObjectID );
     }
 
-    /*!
-     \return the content object for the collaboration item \a $collaborationItem
-    */
+    /**
+     * @return the content object for the collaboration item \a $collaborationItem
+     */
     static function contentObject( $collaborationItem )
     {
         $contentObjectID = $collaborationItem->contentAttribute( 'content_object_id' );
         return eZContentObject::fetch( $contentObjectID );
     }
 
-
-    /*!
-     Updates the last_read for the participant link.
-    */
+    /**
+     * Updates the last_read for the participant link.
+     */
     function readItem( $collaborationItem, $viewMode = false )
     {
         $collaborationItem->setLastRead();
     }
 
-    /*!
-     \return the number of messages for the approve item.
-    */
+    /**
+     * @return the number of messages for the approve item.
+     */
     function messageCount( $collaborationItem )
     {
         return eZCollaborationItemMessageLink::fetchItemCount( array( 'item_id' => $collaborationItem->attribute( 'id' ) ) );
     }
 
-    /*!
-     \return the number of unread messages for the approve item.
-    */
+    /**
+     * @return the number of unread messages for the approve item.
+     */
     function unreadMessageCount( $collaborationItem )
     {
         $lastRead = 0;
@@ -153,10 +124,9 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
                                                                       'conditions' => array( 'modified' => array( '>', $lastRead ) ) ) );
     }
 
-    /*!
-     \static
-     \return the status of the approval collaboration item \a $approvalID.
-    */
+    /**
+     * @return the status of the approval collaboration item \a $approvalID.
+     */
     static function checkApproval( $approvalID )
     {
         $collaborationItem = eZCollaborationItem::fetch( $approvalID );
@@ -167,10 +137,9 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
         return false;
     }
 
-    /*!
-     \static
-     \return makes sure the approval item is activated for all participants \a $approvalID.
-    */
+    /**
+     * @return makes sure the approval item is activated for all participants \a $approvalID.
+     */
     static function activateApproval( $approvalID )
     {
         $collaborationItem = eZCollaborationItem::fetch( $approvalID );
@@ -191,12 +160,12 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
         return false;
     }
 
-    /*!
-     Creates a new approval collaboration item which will approve the content object \a $contentObjectID
-     with version \a $contentObjectVersion.
-     The item will be added to the author \a $authorID and the approver array \a $approverIDArray.
-     \return the collaboration item.
-    */
+    /**
+     * Creates a new approval collaboration item which will approve the content object \a $contentObjectID
+     * with version \a $contentObjectVersion.
+     * The item will be added to the author \a $authorID and the approver array \a $approverIDArray.
+     * @return the collaboration item.
+     */
     static function createApproval( $contentObjectID, $contentObjectVersion, $authorID, $approverIDArray )
     {
         $collaborationItem = eZCollaborationItem::create( approveLocationType::WORKFLOW_TYPE_STRING, $authorID );
@@ -230,9 +199,9 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
         return $collaborationItem;
     }
 
-    /*!
-     Adds a new comment, approves the item or denies the item.
-    */
+    /**
+     * Adds a new comment, approves the item or denies the item.
+     */
     function handleCustomAction( $module, $collaborationItem )
     {
         $redirectView = 'item';
