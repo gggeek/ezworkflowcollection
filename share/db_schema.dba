@@ -32,7 +32,18 @@ $schema = array (
         'not_null' => '1',
         'default' => '',
       )
-	)
+    ),
+    'indexes' => 
+    array (
+      'PRIMARY' => 
+      array (
+        'type' => 'primary',
+        'fields' => 
+        array (
+          0 => 'id',
+        ),
+      )
+    )
   ),
   '_info' => 
   array (
