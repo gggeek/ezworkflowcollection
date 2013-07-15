@@ -7,6 +7,7 @@
  * @copyright (C) G. Giunta 2012
  *
  * @todo add support for "<att1> <att2>" syntax just as in object name definition
+ * @todo add support for prefixes / postfixes
  * @todo use class/attribute picker in gui
  */
 

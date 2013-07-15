@@ -9,10 +9,19 @@ subtree mutiplexer event:
 - add optional negation: trigger if obj outside of tree
 - add depth limitation: trigger if obj is in subtree and no more deep than X
 
-Expire remote caches event:
+expire remote caches event:
 - allow to make calls to more than one remote proxy server at a time
 
-events that could be useful:
+approve-location collaboration handler:
+- move design elements to standard design
+
+rename left-menu "my" to something more appropriate
+
+steal good code / ideas from http://projects.ez.no/ezdms, http://projects.ez.no/workflowboard, http://projects.ez.no/easyadmin
+
+
+
+More events that could be useful:
 
 - subtree multipublish: duplicate children of node X to node Y, keeping tree structure
 

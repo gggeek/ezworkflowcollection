@@ -1,6 +1,6 @@
 <?php
 /**
- * Workflow to approve an object based on its location
+ * Workflow to approve the adding of a location to an object
  *
  * @author O. Portier
  * @license Licensed under GNU General Public License v2.0. See file LICENSE
@@ -16,7 +16,7 @@ class approveLocationType extends eZApproveType
 
    function approveLocationType()
     {
-        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'ezworkflows/workflow/event', "ApproveLocation" ) );
+        $this->eZWorkflowEventType( self::WORKFLOW_TYPE_STRING, ezpI18n::tr( 'ezworkflows/workflow/event', "Approve adding location" ) );
         $this->setTriggerTypes( array( 'content' => array( 'addlocation' => array( 'before' ) ) ) );
     }
 
@@ -122,7 +122,7 @@ class approveLocationType extends eZApproveType
 
     function execute( $process, $event )
     {
-         eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $process, 'approveLocationType::execute' );
+        eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $process, 'approveLocationType::execute' );
         eZDebugSetting::writeDebug( 'ezworkflowcollection-workflow-approve-location', $event, 'approveLocationType::execute' );
         $parameters = $process->attribute( 'parameter_list' );
         $userID = $parameters['user_id'];
@@ -142,7 +142,7 @@ class approveLocationType extends eZApproveType
         }
         else
         {
-            $versionID = $version->attribute('version');
+            $versionID = $version->attribute( 'version' );
         }
 
         // version option checking
@@ -155,8 +155,8 @@ class approveLocationType extends eZApproveType
 
         // Target nodes
         $targetNodeIDs = $parameters['select_node_id_array'];
-        if( !is_array($targetNodeIDs) or
-            count($targetNodeIDs) == 0 )
+        if( !is_array( $targetNodeIDs ) ||
+            count( $targetNodeIDs ) == 0 )
         {
             return eZWorkflowType::STATUS_WORKFLOW_CANCELLED;
         }
@@ -173,6 +173,7 @@ class approveLocationType extends eZApproveType
         {
             $user = eZUser::instance( $userID );
         }
+
         $userGroups = array_merge( $user->attribute( 'groups' ), array( $user->attribute( 'contentobject_id' ) ) );
         $workflowSections = explode( ',', $event->attribute( 'data_text1' ) );
         $workflowGroups =   $event->attribute( 'data_text2' ) == '' ? array() : explode( ',', $event->attribute( 'data_text2' ) );
@@ -569,15 +570,13 @@ class approveLocationType extends eZApproveType
         }
     }
 
-
     function createApproveCollaboration( $process, $event, $userID, $contentobjectID, $contentobjectVersion, $editors )
     {
-         $parameters = $process->attribute( 'parameter_list' );
+        $parameters = $process->attribute( 'parameter_list' );
         $targetNodeIDs = $parameters['select_node_id_array'];
         if ( $editors === null )
             return false;
         $authorID = $userID;
-
         $collaborationItem = approveLocationCollaborationHandler::createApproval( $contentobjectID, $contentobjectVersion,
                                                                             $authorID, $editors );
         $db = eZDb::instance();
