@@ -42,11 +42,11 @@
 {case match=0}
 
 {if $collab_item.is_creator}
-<p>{"The content object %1 awaits approval before the following location(s):"|i18n('design/standard/collaboration/approval',,array($contentobject_link) ) } {$target_node_links}</p>
+<p>{"The content object %1 awaits approval before the following location(s):"|i18n('design/standard/collaboration/approval',,array($contentobject_link) ) }<br/>{$target_node_links}</p>
 <p>{"Do you want to send a message to the person approving it?"|i18n('design/standard/collaboration/approval')}</p>
 {else}
 <p>{"The content object %1 needs your approval."|i18n('design/standard/collaboration/approval',,array($contentobject_link))}</p>
-<p>{"Do you approve the content object %1 to be located in the following location(s)?"|i18n('design/standard/collaboration/approval', , array($contentobject_link) ) } {$target_node_links}</p>
+<p>{"Do you approve the content object %1 to be located in the following location(s)?"|i18n('design/standard/collaboration/approval', , array($contentobject_link) ) }<br/>{$target_node_links}</p>
 {/if}
 
 {/case}
