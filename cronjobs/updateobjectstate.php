@@ -1,9 +1,5 @@
 <?php
 
-// Check for extension
-eZExtension::activateExtensions();
-// Extension check end
-
 $ini = new eZINI( 'content.ini' );
 $unpublishClasses = $ini->variable( 'UnpublishSettings','ClassList' );
 
