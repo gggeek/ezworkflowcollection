@@ -76,7 +76,7 @@
 <br/>
 
 {if eq($collab_item.data_int3,0)}
-<label>{"Comment"|i18n('design/standard/collaboration/approval')}</label><div class="break"/>
+<label>{"Comment"|i18n('design/standard/collaboration/approval')}</label><div class="break"></div>
 <textarea name="Collaboration_ApproveLocationComment" cols="40" rows="5"></textarea>
 
 <div class="buttonblock">
