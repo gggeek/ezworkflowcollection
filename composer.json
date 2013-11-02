@@ -1,0 +1,11 @@
+{
+    "name": "gggeek/ezworkflowcollection",
+    "type": "ezpublish-legacy-extension",
+    "description": "This extension is a collection of general-purpose workflow event types that could be useful in different websites",
+    "license": "GNU General Public License v2.0",
+    "homepage": "http://projects.ez.no/ezworkflowcollection",
+    "minimum-stability": "dev",
+    "require": {
+        "ezsystems/ezpublish-legacy-installer": "*"
+    }
+}
