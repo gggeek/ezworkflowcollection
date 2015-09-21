@@ -89,8 +89,8 @@ class objectStateUpdateType extends eZWorkflowEventType
     {
         switch( $attr )
         {
-            case 'state_group';
-                return eZContentObjectStateGroup::fetchByOffset();
+            case 'state_groups';
+                return eZContentObjectStateGroup::fetchByOffset(null,0);
             default:
                 return eZWorkflowEventType::attribute( $attr );
         }
@@ -102,7 +102,8 @@ class objectStateUpdateType extends eZWorkflowEventType
     function typeFunctionalAttributes()
     {
         return array( 'state_before',
-                      'state_after' );
+                      'state_after'
+                      'state_groups' );
     }
 
     function attributeDecoder( $event, $attr )
@@ -123,6 +124,9 @@ class objectStateUpdateType extends eZWorkflowEventType
                 {
                     return eZContentObjectState::fetchById( $returnValue );
                 }
+                break;
+            case 'state_groups':
+                return eZContentObjectStateGroup::fetchByOffset(null,0);
                 break;
         }
         return null;
