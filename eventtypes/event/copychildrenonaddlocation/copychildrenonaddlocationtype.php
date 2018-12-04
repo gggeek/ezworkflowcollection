@@ -7,7 +7,7 @@
  *
  * @author G. Giunta
  * @license Licensed under GNU General Public License v2.0. See file LICENSE
- * @copyright (C) G. Giunta 2012
+ * @copyright (C) G. Giunta 2012-2018
  */
 
 class copyChildrenOnAddLocationType extends eZWorkflowEventType
@@ -129,4 +129,3 @@ eZWorkflowEventType::registerEventType(
     copyChildrenOnAddLocationType::EVENT_TYPE,
     copyChildrenOnAddLocationType::EVENT_CLASS
 );
-

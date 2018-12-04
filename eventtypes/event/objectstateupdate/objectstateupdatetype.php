@@ -165,5 +165,3 @@ class objectStateUpdateType extends eZWorkflowEventType
 }
 
 eZWorkflowEventType::registerEventType( objectStateUpdateType::WORKFLOW_TYPE_STRING, 'objectstateupdatetype' );
-
-?>

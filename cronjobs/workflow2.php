@@ -133,5 +133,3 @@ if ( !$isQuiet )
     $cli->output();
     $cli->output( $cli->stylize( 'emphasize', $removedProcessCount ) . " out of " . $cli->stylize( 'emphasize', $processCount ) . " processes was finished"  );
 }
-
-?>

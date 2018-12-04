@@ -12,6 +12,7 @@ AvailableEventTypes[]=event_subtreemultiplexer
 AvailableEventTypes[]=event_addurlalias
 AvailableEventTypes[]=event_copychildrenonaddlocation
 AvailableEventTypes[]=event_copynodetoallparentlocations
+AvailableEventTypes[]=event_expireobjectcache
 
 # This one needs object states
 AvailableEventTypes[]=event_objectstateupdate
@@ -21,5 +22,3 @@ AvailableEventTypes[]=event_expireremotecacheflow
 
 #AvailableEventTypes[]=event_relatetonode
 #AvailableEventTypes[]=event_relatetonodeattribute
-
-*/ ?>

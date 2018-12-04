@@ -4,7 +4,7 @@
  *
  * @author O. Portier
  * @license Licensed under GNU General Public License v2.0. See file LICENSE
- * @copyright (C) O. Portier 2010-2012
+ * @copyright (C) O. Portier 2010-2018
  */
 
 //include_once( 'kernel/common/i18n.php' );
@@ -637,5 +637,3 @@ class approveLocationType extends eZApproveType
 }
 
 eZWorkflowEventType::registerEventType( approveLocationType::WORKFLOW_TYPE_STRING, "approveLocationType" );
-
-?>

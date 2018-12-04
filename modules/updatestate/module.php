@@ -10,5 +10,3 @@ $ViewList['list'] = array( 'script' => 'list.php',
 
 $FunctionList = array();
 $FunctionList['list'] = array();
-
-?>

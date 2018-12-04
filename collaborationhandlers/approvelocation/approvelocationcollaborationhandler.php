@@ -267,5 +267,3 @@ class approveLocationCollaborationHandler extends eZCollaborationItemHandler
     }
 
 }
-
-?>

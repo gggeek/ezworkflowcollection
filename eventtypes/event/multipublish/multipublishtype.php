@@ -284,5 +284,3 @@ class multiPublishType extends eZWorkflowEventType
 }
 
 eZWorkflowEventType::registerEventType( multiPublishType::WORKFLOW_TYPE_STRING, 'multipublishtype' );
-
-?>

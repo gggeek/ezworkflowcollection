@@ -8,5 +8,3 @@ DashboardBlocks[]=updatestate_pending
 Priority=12
 NumberOfItems=10
 PolicyList[]=updatestate/list
-
-*/ ?>

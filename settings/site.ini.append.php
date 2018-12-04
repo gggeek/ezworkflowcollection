@@ -2,5 +2,3 @@
 
 [RegionalSettings]
 TranslationExtensions[]=ezworkflowcollection
-
-*/ ?>

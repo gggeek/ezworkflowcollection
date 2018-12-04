@@ -62,5 +62,3 @@ foreach( $rootNodeIDList as $nodeID )
         }
     }
 }
-
-?>

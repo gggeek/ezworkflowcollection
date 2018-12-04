@@ -75,4 +75,3 @@ $Result['content'] = $tpl->fetch( 'design:updatestate/list.tpl' );
 
 $Result['path'] = array( array( 'text' => "Content in state: " . $stateName,
                                 'url' => false ) );
-?>

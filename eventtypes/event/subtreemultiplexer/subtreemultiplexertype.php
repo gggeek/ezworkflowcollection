@@ -194,5 +194,3 @@ class SubTreeMultiplexerType extends eZWorkflowEventType
 }
 
 eZWorkflowEventType::registerEventType( SubTreeMultiplexerType::WORKFLOW_TYPE_STRING, 'subtreemultiplexertype' );
-
-?>

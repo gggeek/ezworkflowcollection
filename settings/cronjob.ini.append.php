@@ -10,5 +10,3 @@ Scripts[]=updateobjectstate.php
 Scripts[]=updateobjectstate.php
 [CronjobPart-workflow2]
 Scripts[]=workflow2.php
-
-*/ ?>

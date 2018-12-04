@@ -4,5 +4,3 @@
 ExtensionRepositories[]=ezworkflowcollection
 
 ModuleList[]=updatestate
-
-*/ ?>

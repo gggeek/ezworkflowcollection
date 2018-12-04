@@ -252,5 +252,3 @@ class expireremotecacheflowType extends eZWorkflowEventType
 }
 
 eZWorkflowEventType::registerEventType( expireremotecacheflowType::WORKFLOW_TYPE_STRING, 'expireremotecacheflowtype' );
-
-?>
