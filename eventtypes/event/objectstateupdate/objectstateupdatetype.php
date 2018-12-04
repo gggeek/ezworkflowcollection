@@ -89,12 +89,11 @@ class objectStateUpdateType extends eZWorkflowEventType
     {
         switch( $attr )
         {
-            case 'state_group';
+            case 'state_groups';
                 return eZContentObjectStateGroup::fetchByOffset();
             default:
                 return eZWorkflowEventType::attribute( $attr );
         }
-
     }
 
     /// per-event attributes
@@ -165,3 +164,5 @@ class objectStateUpdateType extends eZWorkflowEventType
 }
 
 eZWorkflowEventType::registerEventType( objectStateUpdateType::WORKFLOW_TYPE_STRING, 'objectstateupdatetype' );
+
+?>
