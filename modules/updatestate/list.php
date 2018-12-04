@@ -65,7 +65,7 @@ else
     $stateName = $stateName->attribute( 'name' );
 }
 
-$tpl = templateInit();
+$tpl = eZTemplate::factory();
 $tpl->setVariable( 'state', $state );
 $tpl->setVariable( 'state_name', $stateName );
 $tpl->setVariable( 'view_parameters', $viewParameters );
